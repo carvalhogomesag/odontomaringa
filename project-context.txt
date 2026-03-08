@@ -1,0 +1,1901 @@
+================================================================
+CONTEXTO DO PROJETO: ODONTOMARINGÁ
+Gerado em: 08/03/2026, 10:39:23
+================================================================
+
+--- ARQUIVO: .env.example ---
+```example
+# GEMINI_API_KEY: Required for Gemini AI API calls.
+# AI Studio automatically injects this at runtime from user secrets.
+# Users configure this via the Secrets panel in the AI Studio UI.
+GEMINI_API_KEY="MY_GEMINI_API_KEY"
+
+# APP_URL: The URL where this applet is hosted.
+# AI Studio automatically injects this at runtime with the Cloud Run service URL.
+# Used for self-referential links, OAuth callbacks, and API endpoints.
+APP_URL="MY_APP_URL"
+
+```
+
+--- ARQUIVO: .gitignore ---
+```text
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+```
+
+--- ARQUIVO: clareamento-dental-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clareamento Dental em Maringá | Sorriso Branco e Radiante</title>
+    <meta name="description" content="Transforme seu sorriso com Clareamento Dental em Maringá. Técnicas a laser e caseiras com supervisão profissional. Agende sua avaliação e brilhe!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1559599141-381d7c016b10?auto=format&fit=crop&q=80&w=2000" alt="Clareamento Dental Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Estética Dental em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Clareamento Dental em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">Dentes brancos, saudáveis e um sorriso radiante. Conheça as melhores técnicas de clareamento supervisionado em Maringá.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80&w=800" alt="Sorriso Branco" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-12" data-aos="fade-up">Técnicas de Clareamento</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-10 rounded-3xl shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6"><i data-lucide="zap"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">Clareamento a Laser</h3>
+                    <p class="text-slate-500">Resultados imediatos em poucas sessões no consultório.</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6"><i data-lucide="home"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">Clareamento Caseiro</h3>
+                    <p class="text-slate-500">Uso de moldeiras personalizadas com supervisão profissional.</p>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-sm" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6"><i data-lucide="sparkles"></i></div>
+                    <h3 class="text-2xl font-bold mb-4">Técnica Combinada</h3>
+                    <p class="text-slate-500">O melhor dos dois mundos para um branco duradouro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Brilhe com seu novo Sorriso</h2>
+                    <p class="text-slate-400 mb-10">Solicite sua avaliação em Maringá e descubra qual técnica de clareamento é a mais indicada para você.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Clareamento Dental">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <textarea name="mensagem" rows="3" placeholder="Gostaria de dentes mais brancos para algum evento especial?" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Clareamento Dental Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: harmonizacao-orofacial-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmonização Orofacial em Maringá | Estética e Equilíbrio</title>
+    <meta name="description" content="Especialistas em Harmonização Orofacial em Maringá. Botox, preenchimento, fios de sustentação e bioestimuladores. Realce sua beleza com segurança. Agende agora!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=2000" alt="Harmonização Orofacial Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Estética Orofacial em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Harmonização Orofacial em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">Equilíbrio perfeito entre o seu sorriso e as linhas do seu rosto. Procedimentos modernos e seguros para realçar sua beleza natural.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1519415510236-8559b198b82e?auto=format&fit=crop&q=80&w=800" alt="Harmonização Facial" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">O que é a Harmonização?</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">É um conjunto de procedimentos estéticos combinados para melhorar a harmonia do rosto, transformando traços e tratando o envelhecimento facial.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="flex items-center gap-3 text-slate-600"><i data-lucide="check-circle" class="text-blue-600"></i> Botox (Toxina Botulínica)</div>
+                        <div class="flex items-center gap-3 text-slate-600"><i data-lucide="check-circle" class="text-blue-600"></i> Preenchimento Labial</div>
+                        <div class="flex items-center gap-3 text-slate-600"><i data-lucide="check-circle" class="text-blue-600"></i> Bioestimuladores</div>
+                        <div class="flex items-center gap-3 text-slate-600"><i data-lucide="check-circle" class="text-blue-600"></i> Fios de Sustentação</div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2rem] shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Bairros de Maringá</h3>
+                    <p class="text-slate-500 mb-6">Atendimento especializado próximo a você:</p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 01</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 07</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Vila Operária</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Sarandi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Realce sua Beleza em Maringá</h2>
+                    <p class="text-slate-400 mb-10">Solicite sua avaliação com um especialista em harmonização orofacial e descubra o melhor plano de tratamento para você.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Harmonização Orofacial">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <textarea name="mensagem" rows="3" placeholder="Qual área do rosto você gostaria de melhorar?" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Harmonização Orofacial Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: implante-dentario-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implante Dentário em Maringá | Especialistas em Reabilitação Oral</title>
+    <meta name="description" content="Recupere seu sorriso com Implante Dentário em Maringá. Tecnologia avançada, especialistas qualificados e atendimento premium. Agende sua avaliação hoje!">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Implante Dentário em Maringá | Especialistas em Reabilitação Oral">
+    <meta property="og:description" content="Especialistas em implantes dentários com tecnologia de ponta em Maringá.">
+    <meta property="og:type" content="website">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        :root {
+            --dental-blue: #0056b3;
+            --dental-dark: #003d80;
+            --dental-light: #f0f7ff;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary {
+            background-color: var(--dental-blue);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--dental-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,86,179,0.2);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+
+    <!-- Header/Nav -->
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1629909608135-ca29ed974bb9?auto=format&fit=crop&q=80&w=2000" alt="Implante Dentário Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Especialista em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">
+                    Implante Dentário em <span class="text-blue-600">Maringá</span>
+                </h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">
+                    Recupere a segurança ao sorrir e a funcionalidade da sua mastigação com tecnologia de implantes de última geração. Atendimento premium para pacientes exigentes.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold flex items-center gap-2">
+                        Agendar Avaliação <i data-lucide="chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="relative" data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" alt="Sorriso Perfeito" class="rounded-[3rem] shadow-2xl">
+                <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                    <div class="bg-green-100 p-3 rounded-full text-green-600"><i data-lucide="check-circle-2"></i></div>
+                    <div>
+                        <p class="font-bold text-slate-800">Tecnologia Suíça</p>
+                        <p class="text-xs text-slate-500">Alta durabilidade e estética</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">O que é o Implante Dentário?</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">
+                        O implante dentário é a solução definitiva para a perda de um ou mais dentes. Trata-se de um pino de titânio que substitui a raiz do dente, servindo de base para uma prótese idêntica ao dente natural.
+                    </p>
+                    <h3 class="text-2xl font-bold mb-4">Quem precisa?</h3>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 text-slate-600"><i data-lucide="check" class="text-blue-600"></i> Pessoas que perderam um ou mais dentes.</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i data-lucide="check" class="text-blue-600"></i> Quem usa dentaduras e busca mais conforto.</li>
+                        <li class="flex items-center gap-3 text-slate-600"><i data-lucide="check" class="text-blue-600"></i> Pacientes com dificuldades na mastigação.</li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm">
+                        <h4 class="font-bold text-blue-600 mb-2">Recuperação</h4>
+                        <p class="text-sm text-slate-500">Processo rápido e acompanhado por especialistas em Maringá.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm">
+                        <h4 class="font-bold text-blue-600 mb-2">Estética</h4>
+                        <p class="text-sm text-slate-500">Dentes com aparência e brilho naturais.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm">
+                        <h4 class="font-bold text-blue-600 mb-2">Localização</h4>
+                        <p class="text-sm text-slate-500">Próximo à Zona 01, Zona 07 e Jardim Alvorada.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm">
+                        <h4 class="font-bold text-blue-600 mb-2">Segurança</h4>
+                        <p class="text-sm text-slate-500">Materiais biocompatíveis certificados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Solicite sua Avaliação em Maringá</h2>
+                    <p class="text-slate-400 mb-10">Preencha o formulário e nossa equipe entrará em contato para agendar seu horário com um especialista em implantes.</p>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="phone" class="text-blue-500"></i>
+                            <span>Atendimento via WhatsApp</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="map-pin" class="text-blue-500"></i>
+                            <span>Clínicas parceiras em toda Maringá</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <p class="hidden">
+                            <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                        </p>
+                        <input type="hidden" name="procedimento" value="Implante Dentário">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Nome Completo</label>
+                            <input type="text" name="nome" required placeholder="Seu nome" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">WhatsApp</label>
+                            <input type="tel" name="whatsapp" required placeholder="(44) 99999-9999" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600 transition-all">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Urgência</label>
+                            <select name="urgencia" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600 transition-all">
+                                <option value="sem-pressa">Sem pressa</option>
+                                <option value="esta-semana">Esta semana</option>
+                                <option value="urgente">Urgente</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Como podemos ajudar?</label>
+                            <textarea name="mensagem" rows="3" placeholder="Conte-nos brevemente sobre seu caso..." class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600 transition-all"></textarea>
+                        </div>
+                        <div class="flex items-start gap-3 py-2">
+                            <input type="checkbox" required name="aceite" id="aceite" class="mt-1">
+                            <label for="aceite" class="text-sm text-slate-500">Aceito ser contatado por um especialista em Maringá.</label>
+                        </div>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8 mb-12 text-sm font-semibold text-slate-500">
+                <a href="implante-dentario-maringa.html" class="hover:text-blue-600">Implantes</a>
+                <a href="ortodontista-maringa.html" class="hover:text-blue-600">Ortodontia</a>
+                <a href="tratamento-de-canal-maringa.html" class="hover:text-blue-600">Canal</a>
+                <a href="clareamento-dental-maringa.html" class="hover:text-blue-600">Clareamento</a>
+                <a href="harmonizacao-orofacial-maringa.html" class="hover:text-blue-600">Harmonização</a>
+            </div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Atendimento em Maringá, PR.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        AOS.init({ duration: 1000, once: true });
+    </script>
+
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dentist",
+      "name": "OdontoMaringá - Implantes",
+      "description": "Especialistas em Implante Dentário em Maringá.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Maringá",
+        "addressRegion": "PR",
+        "addressCountry": "BR"
+      },
+      "url": "https://ais-dev-xv7xpqkmbyddmw6bpc2o5a-153644149083.europe-west2.run.app/implante-dentario-maringa.html"
+    }
+    </script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: index.html ---
+```html
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dentista em Maringá | Implantes, Ortodontia e Especialistas</title>
+    <meta name="description" content="Encontre dentistas especialistas em Maringá. Implantes, ortodontia, canal e estética dental. Solicite uma avaliação agora e recupere seu sorriso." />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Dentista em Maringá | Implantes, Ortodontia e Especialistas" />
+    <meta property="og:description" content="Encontre os melhores especialistas odontológicos de Maringá em um só lugar." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "OdontoMaringá",
+        "description": "Portal de encaminhamento odontológico premium em Maringá.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Maringá",
+          "addressRegion": "PR",
+          "addressCountry": "BR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": "-23.4209",
+          "longitude": "-51.9331"
+        },
+        "url": "https://maringa.odontoportal.com.br"
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Hidden form for Netlify detection -->
+    <form name="captura-leads-dentistas" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="nome" />
+      <input type="email" name="email" />
+      <input type="tel" name="whatsapp" />
+      <input type="text" name="procedimento" />
+      <input type="text" name="urgencia" />
+      <textarea name="mensagem"></textarea>
+      <input type="checkbox" name="aceite" />
+    </form>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+```
+
+--- ARQUIVO: lentes-de-contato-dental-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentes de Contato Dental em Maringá | Sorriso de Estrela</title>
+    <meta name="description" content="Transforme seu sorriso com Lentes de Contato Dental em Maringá. Facetas de porcelana ultra-finas para um sorriso perfeito e natural. Agende sua avaliação!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80&w=2000" alt="Lentes de Contato Dental Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Estética Avançada em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Lentes de Contato Dental em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">O sorriso dos seus sonhos com facetas de porcelana ultra-finas. Transformação estética completa com durabilidade e naturalidade em Maringá.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" alt="Sorriso Perfeito" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">Por que Lentes de Contato?</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">As lentes de contato dental são lâminas de porcelana extremamente finas que corrigem imperfeições de cor, forma e alinhamento dos dentes com o mínimo desgaste.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="sparkles" class="text-blue-600"></i> Correção de dentes manchados ou escuros</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="sparkles" class="text-blue-600"></i> Fechamento de espaços (diastemas)</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="sparkles" class="text-blue-600"></i> Correção de dentes desgastados ou lascados</div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2rem] shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Atendimento em Maringá</h3>
+                    <p class="text-slate-500 mb-6">Especialistas em Estética Dental nos principais bairros:</p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 01</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 07</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Jd. Alvorada</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Vila Operária</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Conquiste o Sorriso dos Sonhos</h2>
+                    <p class="text-slate-400 mb-10">Solicite sua avaliação em Maringá e descubra como as lentes de contato dental podem transformar sua autoestima.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Lentes de Contato Dental">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <textarea name="mensagem" rows="3" placeholder="O que você gostaria de mudar no seu sorriso?" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Lentes de Contato Dental Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: metadata.json ---
+```json
+{
+  "name": "OdontoMaringá - Especialistas em Sorrisos",
+  "description": "Portal premium de encaminhamento odontológico em Maringá. Encontre especialistas em implantes, ortodontia e estética dental.",
+  "requestFramePermissions": []
+}
+
+```
+
+--- ARQUIVO: odontologia-estetica-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odontologia Estética em Maringá | Transformação do Sorriso</title>
+    <meta name="description" content="Especialistas em Odontologia Estética em Maringá. Facetas, restaurações estéticas, plástica gengival e muito mais. Sorriso perfeito com tecnologia. Agende agora!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80&w=2000" alt="Odontologia Estética Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Estética Dental em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Odontologia Estética em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">A arte de criar sorrisos perfeitos. Combinamos ciência e estética para transformar sua aparência e devolver sua confiança em Maringá.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1629909608135-ca29ed974bb9?auto=format&fit=crop&q=80&w=800" alt="Estética Dental" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">O que fazemos por você?</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">A odontologia estética moderna permite correções precisas em dentes desalinhados, escurecidos ou com formas irregulares, utilizando materiais que imitam perfeitamente o esmalte dental.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="sparkles" class="text-blue-600"></i> Restaurações Estéticas em Resina</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="sparkles" class="text-blue-600"></i> Plástica Gengival</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="sparkles" class="text-blue-600"></i> Fechamento de Diastemas</div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2rem] shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Localização em Maringá</h3>
+                    <p class="text-slate-500 mb-6">Especialistas em Estética Dental próximos aos bairros:</p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 01</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 07</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Vila Operária</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Mandacaru</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Transforme seu Sorriso</h2>
+                    <p class="text-slate-400 mb-10">Solicite sua avaliação em Maringá e descubra como a odontologia estética pode mudar sua vida.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Odontologia Estética">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <textarea name="mensagem" rows="3" placeholder="Qual a sua principal insatisfação com seu sorriso atual?" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Odontologia Estética Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: ortodontista-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ortodontista em Maringá | Aparelhos Invisíveis e Convencionais</title>
+    <meta name="description" content="Encontre o melhor Ortodontista em Maringá. Aparelhos fixos, estéticos e alinhadores invisíveis. Sorriso alinhado com especialistas. Agende sua avaliação!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=2000" alt="Ortodontista Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Ortodontia em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Sorriso Alinhado em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10">Especialistas em aparelhos modernos, autoligados e alinhadores invisíveis. Tecnologia para um tratamento mais rápido e confortável.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1516062423079-7ca13cdc7f5a?auto=format&fit=crop&q=80&w=800" alt="Aparelho Ortodôntico" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">Por que buscar um Ortodontista?</h2>
+                    <p class="text-lg text-slate-600 mb-6">A ortodontia vai além da estética. Dentes alinhados facilitam a higienização, melhoram a dicção e previnem problemas na articulação temporomandibular (ATM).</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="zap" class="text-blue-600"></i> Alinhadores Invisíveis (Invisalign)</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="zap" class="text-blue-600"></i> Aparelhos Autoligados</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="zap" class="text-blue-600"></i> Ortodontia Preventiva para Crianças</div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2rem] shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Bairros Atendidos em Maringá</h3>
+                    <p class="text-slate-500 mb-6">Nossas clínicas parceiras estão estrategicamente localizadas para sua conveniência:</p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 01 (Centro)</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 07</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Jd. Alvorada</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Vila Operária</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Inicie seu Tratamento Ortodôntico</h2>
+                    <p class="text-slate-400 mb-10">Conectamos você aos melhores ortodontistas de Maringá. Solicite uma avaliação gratuita e descubra o melhor aparelho para você.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Ortodontia">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <select name="urgencia" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                            <option value="sem-pressa">Quero alinhar meu sorriso</option>
+                            <option value="urgente">Aparelho quebrado/Urgência</option>
+                        </select>
+                        <textarea name="mensagem" rows="3" placeholder="Dúvidas sobre aparelhos?" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Especialistas em Ortodontia Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: package.json ---
+```json
+{
+  "name": "react-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit",
+    "generate-context": "tsx generate-context.ts"
+  },
+  "dependencies": {
+    "@google/genai": "^1.29.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@vitejs/plugin-react": "^5.0.4",
+    "lucide-react": "^0.546.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "vite": "^6.2.0",
+    "express": "^4.21.2",
+    "dotenv": "^17.2.3",
+    "better-sqlite3": "^12.4.1",
+    "motion": "^12.23.24"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "autoprefixer": "^10.4.21",
+    "tailwindcss": "^4.1.14",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "@types/express": "^4.17.21"
+  }
+}
+
+```
+
+--- ARQUIVO: proteses-dentarias-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próteses Dentárias em Maringá | Conforto e Segurança</title>
+    <meta name="description" content="Recupere sua mastigação e estética com Próteses Dentárias em Maringá. Próteses fixas, removíveis e sobre implantes. Qualidade e durabilidade. Agende agora!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1629909608135-ca29ed974bb9?auto=format&fit=crop&q=80&w=2000" alt="Próteses Dentárias Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Reabilitação Oral em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Próteses Dentárias em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">Recupere sua autoestima e a alegria de comer o que gosta. Soluções personalizadas em próteses fixas e removíveis com especialistas em Maringá.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" alt="Prótese Dentária" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">Soluções em Próteses</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">Seja para substituir um único dente ou todos eles, nossas próteses são confeccionadas com materiais de alta qualidade para garantir conforto e naturalidade.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="award" class="text-blue-600"></i> Prótese Protocolo (Fixa sobre Implantes)</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="award" class="text-blue-600"></i> Próteses Parciais Removíveis</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="award" class="text-blue-600"></i> Coroas em Porcelana ou Zircônia</div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2rem] shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Atendimento em Maringá</h3>
+                    <p class="text-slate-500 mb-6">Clínicas parceiras em localizações estratégicas:</p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 01</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 07</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Jd. Alvorada</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Sarandi</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Recupere sua Segurança</h2>
+                    <p class="text-slate-400 mb-10">Solicite sua avaliação em Maringá e descubra a melhor solução em prótese para o seu caso.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Próteses Dentárias">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <textarea name="mensagem" rows="3" placeholder="Você já usa prótese ou precisa de uma nova?" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Próteses Dentárias Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: src/App.tsx ---
+```tsx
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useEffect } from 'react';
+import { 
+  Stethoscope, 
+  ShieldCheck, 
+  Clock, 
+  MapPin, 
+  ChevronRight, 
+  Star, 
+  CheckCircle2, 
+  Plus, 
+  Minus, 
+  X,
+  Phone,
+  MessageSquare,
+  Smile,
+  Activity,
+  Sparkles,
+  Zap,
+  Award
+} from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+// --- Types ---
+interface Specialty {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}
+
+// --- Data ---
+const SPECIALTIES: Specialty[] = [
+  { 
+    id: 'implante', 
+    title: 'Implante Dentário', 
+    description: 'Recupere a funcionalidade e estética do seu sorriso com tecnologia de ponta.',
+    icon: <Activity className="w-8 h-8" />
+  },
+  { 
+    id: 'ortodontia', 
+    title: 'Ortodontia', 
+    description: 'Aparelhos modernos e discretos para alinhar seu sorriso com conforto.',
+    icon: <Zap className="w-8 h-8" />
+  },
+  { 
+    id: 'endodontia', 
+    title: 'Endodontia (Canal)', 
+    description: 'Tratamento humanizado e indolor para preservar a saúde dos seus dentes.',
+    icon: <ShieldCheck className="w-8 h-8" />
+  },
+  { 
+    id: 'clareamento', 
+    title: 'Clareamento Dental', 
+    description: 'Dentes mais brancos e radiantes com técnicas seguras e eficazes.',
+    icon: <Sparkles className="w-8 h-8" />
+  },
+  { 
+    id: 'lentes', 
+    title: 'Lentes de Contato', 
+    description: 'Transformação estética completa com facetas de porcelana ultra-finas.',
+    icon: <Smile className="w-8 h-8" />
+  },
+  { 
+    id: 'protese', 
+    title: 'Prótese Dentária', 
+    description: 'Soluções fixas ou removíveis para devolver sua autoestima ao sorrir.',
+    icon: <Award className="w-8 h-8" />
+  },
+  { 
+    id: 'harmonizacao', 
+    title: 'Harmonização Orofacial', 
+    description: 'Equilíbrio estético entre o sorriso e as linhas do seu rosto.',
+    icon: <Sparkles className="w-8 h-8" />
+  },
+  { 
+    id: 'estetica', 
+    title: 'Odontologia Estética', 
+    description: 'O que há de mais moderno em restaurações e plástica dental.',
+    icon: <Stethoscope className="w-8 h-8" />
+  },
+];
+
+const TESTIMONIALS = [
+  { name: 'Ricardo Silva', text: 'Consegui atendimento muito rápido em Maringá. O especialista indicado foi excelente!', rating: 5 },
+  { name: 'Mariana Costa', text: 'O portal facilitou muito minha busca por um ortodontista. Recomendo a todos.', rating: 5 },
+  { name: 'João Pereira', text: 'Atendimento premium desde o primeiro contato. Muito satisfeito com o resultado.', rating: 5 },
+];
+
+const FAQS = [
+  { q: 'Quanto custa a avaliação?', a: 'O valor da avaliação depende do especialista parceiro, mas muitos oferecem condições facilitadas para pacientes vindos do portal.' },
+  { q: 'Como escolhem os dentistas?', a: 'Selecionamos apenas profissionais com registro ativo, clínicas bem avaliadas e vasta experiência em suas especialidades.' },
+  { q: 'Posso escolher o profissional?', a: 'Sim, após o seu pedido, apresentamos as melhores opções em Maringá para que você tome a decisão final.' },
+  { q: 'O atendimento é gratuito?', a: 'O portal de encaminhamento é gratuito para o paciente. Os custos do tratamento são tratados diretamente com a clínica parceira.' },
+];
+
+// --- Components ---
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-md py-3' : 'bg-transparent py-6'}`}>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="flex items-center gap-2">
+          <div className="bg-dental-blue p-2 rounded-lg">
+            <Stethoscope className="text-white w-6 h-6" />
+          </div>
+          <span className={`text-xl font-bold tracking-tight ${isScrolled ? 'text-dental-blue' : 'text-white'}`}>OdontoMaringá</span>
+        </div>
+        <div className="hidden md:flex items-center gap-8">
+          <a href="#especialidades" className={`font-medium hover:text-dental-blue transition-colors ${isScrolled ? 'text-slate-600' : 'text-white/90'}`}>Especialidades</a>
+          <a href="#como-funciona" className={`font-medium hover:text-dental-blue transition-colors ${isScrolled ? 'text-slate-600' : 'text-white/90'}`}>Como Funciona</a>
+          <a href="#faq" className={`font-medium hover:text-dental-blue transition-colors ${isScrolled ? 'text-slate-600' : 'text-white/90'}`}>Dúvidas</a>
+          <button onClick={() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })} className="btn-primary py-2 px-6 text-sm">
+            Agendar Agora
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+const SpecialtyCard = ({ specialty, onClick }: { specialty: Specialty, onClick: (s: Specialty) => void, key?: any }) => {
+  return (
+    <motion.div 
+      whileHover={{ y: -10 }}
+      className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:shadow-xl transition-all group cursor-pointer"
+      onClick={() => onClick(specialty)}
+    >
+      <div className="bg-dental-light text-dental-blue w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-dental-blue group-hover:text-white transition-colors">
+        {specialty.icon}
+      </div>
+      <h3 className="text-2xl font-bold mb-3 text-slate-800">{specialty.title}</h3>
+      <p className="text-slate-500 mb-6 leading-relaxed">{specialty.description}</p>
+      <div className="flex items-center text-dental-blue font-semibold gap-2 group-hover:gap-4 transition-all">
+        Agendar Avaliação <ChevronRight className="w-5 h-5" />
+      </div>
+    </motion.div>
+  );
+};
+
+const Modal = ({ isOpen, onClose, selectedSpecialty }: { isOpen: boolean, onClose: () => void, selectedSpecialty: Specialty | null }) => {
+  if (!isOpen) return null;
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <motion.div 
+        initial={{ scale: 0.9, opacity: 0, y: 20 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.9, opacity: 0, y: 20 }}
+        className="bg-white w-full max-w-xl rounded-[2rem] overflow-hidden shadow-2xl relative"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button onClick={onClose} className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors">
+          <X className="w-6 h-6" />
+        </button>
+        
+        <div className="p-10">
+          <div className="mb-8">
+            <h2 className="text-3xl font-bold text-slate-900 mb-2">Solicitar Avaliação</h2>
+            <p className="text-slate-500">Preencha os dados abaixo para encontrarmos o melhor especialista em Maringá para você.</p>
+          </div>
+
+          <form 
+            name="captura-leads-dentistas" 
+            method="POST" 
+            data-netlify="true" 
+            className="space-y-4"
+          >
+            <input type="hidden" name="form-name" value="captura-leads-dentistas" />
+            <input type="hidden" name="procedimento" value={selectedSpecialty?.title || 'Geral'} />
+            <input type="hidden" name="cidade" value="Maringá" />
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Nome Completo</label>
+                <input required name="nome" type="text" placeholder="Seu nome" className="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-dental-blue transition-all" />
+              </div>
+              <div className="space-y-1">
+                <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">WhatsApp</label>
+                <input required name="whatsapp" type="tel" placeholder="(44) 99999-9999" className="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-dental-blue transition-all" />
+              </div>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">Urgência</label>
+              <select name="urgencia" className="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-dental-blue transition-all">
+                <option value="sem-pressa">Sem pressa</option>
+                <option value="esta-semana">Esta semana</option>
+                <option value="urgente">Urgente</option>
+              </select>
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-xs font-bold uppercase tracking-wider text-slate-400 ml-1">O que você precisa?</label>
+              <textarea name="mensagem" rows={3} placeholder="Descreva brevemente sua necessidade..." className="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-dental-blue transition-all resize-none"></textarea>
+            </div>
+
+            <div className="flex items-start gap-3 py-2">
+              <input required type="checkbox" name="aceite" id="aceite" className="mt-1 rounded text-dental-blue focus:ring-dental-blue" />
+              <label htmlFor="aceite" className="text-sm text-slate-500 leading-snug">
+                Aceito ser contatado por um especialista parceiro para agendar minha avaliação.
+              </label>
+            </div>
+
+            <button type="submit" className="btn-primary w-full py-4 text-lg mt-4">
+              Enviar Solicitação
+            </button>
+          </form>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const FAQItem = ({ faq }: { faq: { q: string, a: string }, key?: any }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border-b border-slate-100 last:border-none">
+      <button 
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-6 flex justify-between items-center text-left hover:text-dental-blue transition-colors"
+      >
+        <span className="text-lg font-bold text-slate-800">{faq.q}</span>
+        {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 text-slate-500 leading-relaxed">{faq.a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedSpecialty, setSelectedSpecialty] = useState<Specialty | null>(null);
+
+  const openModal = (specialty?: Specialty) => {
+    setSelectedSpecialty(specialty || null);
+    setIsModalOpen(true);
+  };
+
+  return (
+    <div className="min-h-screen font-sans selection:bg-dental-blue/10 selection:text-dental-blue">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://picsum.photos/seed/dental-clinic/1920/1080" 
+            alt="Consultório Moderno" 
+            className="w-full h-full object-cover scale-105"
+            referrerPolicy="no-referrer"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/40 to-transparent"></div>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl"
+          >
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white text-sm font-medium mb-8">
+              <MapPin className="w-4 h-4 text-dental-blue" /> Atendimento Premium em Maringá
+            </div>
+            <h1 className="text-6xl md:text-7xl font-bold text-white mb-6 leading-[1.1]">
+              Encontre o dentista <span className="text-dental-blue italic">ideal</span> em Maringá
+            </h1>
+            <p className="text-xl text-white/80 mb-10 leading-relaxed">
+              Conectamos você aos melhores especialistas em implantes, ortodontia, endodontia e estética dental da cidade.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button onClick={() => openModal()} className="btn-primary text-lg">
+                Agendar Avaliação
+              </button>
+              <button onClick={() => document.getElementById('especialidades')?.scrollIntoView({ behavior: 'smooth' })} className="btn-secondary !border-white !text-white hover:!bg-white/10 text-lg">
+                Encontrar Especialista
+              </button>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* Floating Stats */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="absolute bottom-12 left-0 right-0 z-10 hidden lg:block"
+        >
+          <div className="max-w-7xl mx-auto px-6 flex gap-12">
+            {[
+              { label: 'Especialistas', value: '50+' },
+              { label: 'Pacientes Felizes', value: '10k+' },
+              { label: 'Anos em Maringá', value: '15+' },
+            ].map((stat, i) => (
+              <div key={i} className="text-white">
+                <div className="text-3xl font-bold mb-1">{stat.value}</div>
+                <div className="text-sm text-white/60 uppercase tracking-widest font-semibold">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* How it Works */}
+      <section id="como-funciona" className="section-padding bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Como Funciona</h2>
+            <p className="text-slate-500 max-w-2xl mx-auto text-lg">Três passos simples para transformar o seu sorriso com os melhores profissionais.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {[
+              { icon: <Stethoscope />, title: 'Escolha o Procedimento', desc: 'Selecione a especialidade que você precisa entre as diversas opções disponíveis.' },
+              { icon: <MapPin />, title: 'Encontre Especialistas', desc: 'Nossa inteligência local seleciona os melhores dentistas em Maringá para o seu caso.' },
+              { icon: <Clock />, title: 'Atendimento Rápido', desc: 'Receba o contato da clínica e agende sua avaliação em tempo recorde.' },
+            ].map((step, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="text-center group"
+              >
+                <div className="w-20 h-20 bg-white rounded-3xl shadow-sm flex items-center justify-center mx-auto mb-8 text-dental-blue group-hover:bg-dental-blue group-hover:text-white transition-all duration-500 transform group-hover:rotate-6">
+                  {React.cloneElement(step.icon as React.ReactElement, { className: 'w-10 h-10' })}
+                </div>
+                <h3 className="text-2xl font-bold mb-4 text-slate-800">{step.title}</h3>
+                <p className="text-slate-500 leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Specialties */}
+      <section id="especialidades" className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Nossas Especialidades</h2>
+              <p className="text-slate-500 text-lg">Oferecemos uma gama completa de tratamentos odontológicos com especialistas certificados em Maringá.</p>
+            </div>
+            <button onClick={() => openModal()} className="btn-secondary">
+              Ver Todas Especialidades
+            </button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {SPECIALTIES.map((specialty) => (
+              <SpecialtyCard key={specialty.id} specialty={specialty} onClick={(s) => openModal(s)} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof */}
+      <section className="section-padding bg-dental-blue relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>
+        
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">O que dizem nossos pacientes</h2>
+            <div className="flex justify-center gap-1 text-yellow-400">
+              {[...Array(5)].map((_, i) => <Star key={i} fill="currentColor" className="w-6 h-6" />)}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t, i) => (
+              <motion.div 
+                key={i}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="bg-white/10 backdrop-blur-md border border-white/20 p-8 rounded-3xl text-white"
+              >
+                <p className="text-lg italic mb-6 leading-relaxed">"{t.text}"</p>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center font-bold">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <div className="font-bold">{t.name}</div>
+                    <div className="text-sm text-white/60">Paciente Verificado</div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="relative">
+            <img 
+              src="https://picsum.photos/seed/dentist-working/800/1000" 
+              alt="Dentista trabalhando" 
+              className="rounded-[3rem] shadow-2xl"
+              referrerPolicy="no-referrer"
+            />
+            <motion.div 
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity }}
+              className="absolute -bottom-10 -right-10 bg-white p-8 rounded-3xl shadow-2xl max-w-xs hidden md:block"
+            >
+              <div className="flex items-center gap-4 mb-4">
+                <div className="bg-green-100 text-green-600 p-2 rounded-full">
+                  <CheckCircle2 className="w-6 h-6" />
+                </div>
+                <span className="font-bold text-slate-800">Qualidade Garantida</span>
+              </div>
+              <p className="text-sm text-slate-500">Todos os nossos parceiros passam por um rigoroso processo de verificação.</p>
+            </motion.div>
+          </div>
+
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">Por que escolher o nosso portal?</h2>
+            <div className="space-y-8">
+              {[
+                { title: 'Dentistas Verificados', desc: 'Apenas profissionais com excelente histórico e clínicas modernas.' },
+                { title: 'Atendimento Rápido', desc: 'Nossa rede em Maringá garante que você não espere semanas por uma consulta.' },
+                { title: 'Especialistas por Procedimento', desc: 'Encaminhamos você para quem realmente entende do seu caso.' },
+                { title: 'Agendamento Fácil', desc: 'Todo o processo é feito via WhatsApp, de forma simples e direta.' },
+              ].map((benefit, i) => (
+                <div key={i} className="flex gap-6">
+                  <div className="flex-shrink-0 w-12 h-12 bg-dental-light text-dental-blue rounded-2xl flex items-center justify-center font-bold text-xl">
+                    {i + 1}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-800 mb-2">{benefit.title}</h4>
+                    <p className="text-slate-500 leading-relaxed">{benefit.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <button onClick={() => openModal()} className="btn-primary mt-12">
+              Solicitar Avaliação Agora
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="section-padding bg-slate-50">
+        <div className="max-w-3xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Perguntas Frequentes</h2>
+            <p className="text-slate-500">Tudo o que você precisa saber sobre o nosso serviço em Maringá.</p>
+          </div>
+          <div className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-sm border border-slate-100">
+            {FAQS.map((faq, i) => (
+              <FAQItem key={i} faq={faq} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="section-padding bg-white">
+        <div className="max-w-7xl mx-auto">
+          <motion.div 
+            whileHover={{ scale: 1.01 }}
+            className="bg-slate-900 rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-dental-blue/20"></div>
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8">Encontre seu dentista em Maringá hoje</h2>
+              <p className="text-xl text-white/70 mb-12 max-w-2xl mx-auto">
+                Não adie mais o cuidado com o seu sorriso. Solicite uma avaliação com um especialista agora mesmo.
+              </p>
+              <button onClick={() => openModal()} className="btn-primary text-xl px-12 py-5">
+                Solicitar Avaliação <ChevronRight className="w-6 h-6" />
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-50 pt-20 pb-10 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+            <div className="space-y-6">
+              <div className="flex items-center gap-2">
+                <div className="bg-dental-blue p-2 rounded-lg">
+                  <Stethoscope className="text-white w-6 h-6" />
+                </div>
+                <span className="text-xl font-bold tracking-tight text-dental-blue">OdontoMaringá</span>
+              </div>
+              <p className="text-slate-500 leading-relaxed">
+                O maior portal de conexão entre pacientes e especialistas odontológicos de Maringá. Qualidade e confiança em cada sorriso.
+              </p>
+              <div className="flex gap-4">
+                <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-dental-blue hover:shadow-md transition-all">
+                  <Phone className="w-5 h-5" />
+                </a>
+                <a href="#" className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-slate-400 hover:text-dental-blue hover:shadow-md transition-all">
+                  <MessageSquare className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm">Links Rápidos</h4>
+              <ul className="space-y-4">
+                <li><a href="#especialidades" className="text-slate-500 hover:text-dental-blue transition-colors">Especialidades</a></li>
+                <li><a href="#como-funciona" className="text-slate-500 hover:text-dental-blue transition-colors">Como Funciona</a></li>
+                <li><a href="#faq" className="text-slate-500 hover:text-dental-blue transition-colors">Dúvidas</a></li>
+                <li><a href="#" className="text-slate-500 hover:text-dental-blue transition-colors">Política de Privacidade</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm">SEO Local</h4>
+              <ul className="space-y-4">
+                <li><a href="#" className="text-slate-500 hover:text-dental-blue transition-colors">Implante Dentário Maringá</a></li>
+                <li><a href="#" className="text-slate-500 hover:text-dental-blue transition-colors">Ortodontista Maringá</a></li>
+                <li><a href="#" className="text-slate-500 hover:text-dental-blue transition-colors">Dentista em Maringá</a></li>
+                <li><a href="#" className="text-slate-500 hover:text-dental-blue transition-colors">Clareamento Dental Maringá</a></li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-bold text-slate-900 mb-6 uppercase tracking-widest text-sm">Contato</h4>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3 text-slate-500">
+                  <MapPin className="w-5 h-5 text-dental-blue" /> Maringá, PR - Brasil
+                </li>
+                <li className="flex items-center gap-3 text-slate-500">
+                  <Phone className="w-5 h-5 text-dental-blue" /> (44) 99999-9999
+                </li>
+                <li className="flex items-center gap-3 text-slate-500">
+                  <MessageSquare className="w-5 h-5 text-dental-blue" /> Atendimento via WhatsApp
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-slate-200 pt-10 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-slate-400 text-sm">
+              &copy; {new Date().getFullYear()} OdontoMaringá. Todos os direitos reservados.
+            </p>
+            <div className="flex items-center gap-2 text-slate-400 text-sm">
+              Desenvolvido para <span className="font-bold text-slate-600">Alta Conversão</span>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {isModalOpen && (
+          <Modal 
+            isOpen={isModalOpen} 
+            onClose={() => setIsModalOpen(false)} 
+            selectedSpecialty={selectedSpecialty} 
+          />
+        )}
+      </AnimatePresence>
+
+      {/* Floating WhatsApp Button */}
+      <motion.a 
+        href="https://wa.me/5544999999999"
+        target="_blank"
+        rel="noopener noreferrer"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-8 right-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl flex items-center justify-center"
+      >
+        <MessageSquare className="w-8 h-8" />
+      </motion.a>
+    </div>
+  );
+}
+
+```
+
+--- ARQUIVO: src/index.css ---
+```css
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-dental-blue: #0056b3;
+  --color-dental-light: #f0f7ff;
+  --color-dental-dark: #003d80;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-slate-900 antialiased;
+  }
+  
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-dental-blue text-white px-8 py-4 rounded-full font-semibold transition-all hover:bg-dental-dark hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-dental-blue text-dental-blue px-8 py-4 rounded-full font-semibold transition-all hover:bg-dental-light active:scale-95 flex items-center justify-center gap-2;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .section-padding {
+    @apply py-20 px-6 md:px-12 lg:px-24;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+```
+
+--- ARQUIVO: src/main.tsx ---
+```tsx
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
+
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
+
+```
+
+--- ARQUIVO: tratamento-de-canal-maringa.html ---
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tratamento de Canal em Maringá | Endodontia sem Dor</title>
+    <meta name="description" content="Especialistas em Tratamento de Canal em Maringá. Endodontia moderna com as melhores técnicas para alívio imediato da dor. Agende sua avaliação agora!">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        :root { --dental-blue: #0056b3; --dental-dark: #003d80; --dental-light: #f0f7ff; }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        .btn-primary { background-color: var(--dental-blue); transition: all 0.3s ease; }
+        .btn-primary:hover { background-color: var(--dental-dark); transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-white text-slate-900">
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i data-lucide="stethoscope" class="text-blue-600"></i>
+                <span class="text-xl font-bold text-blue-800">OdontoMaringá</span>
+            </div>
+            <a href="#contato" class="btn-primary text-white px-6 py-2 rounded-full text-sm font-semibold">Agendar Avaliação</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=2000" alt="Tratamento de Canal Maringá" class="w-full h-full object-cover opacity-20">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <span class="inline-block px-4 py-1 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6 uppercase tracking-widest">Endodontia em Maringá</span>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight text-slate-900">Tratamento de Canal em <span class="text-blue-600">Maringá</span></h1>
+                <p class="text-xl text-slate-600 mb-10 leading-relaxed">Alívio imediato da dor e preservação do seu dente natural. Técnicas modernas e humanizadas para um tratamento de canal indolor.</p>
+                <a href="#contato" class="btn-primary text-white px-10 py-4 rounded-full text-lg font-bold inline-flex items-center gap-2">Agendar Avaliação <i data-lucide="chevron-right"></i></a>
+            </div>
+            <div data-aos="zoom-in">
+                <img src="https://images.unsplash.com/photo-1629909608135-ca29ed974bb9?auto=format&fit=crop&q=80&w=800" alt="Dentista Especialista" class="rounded-[3rem] shadow-2xl">
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-20">
+                <div data-aos="fade-up">
+                    <h2 class="text-4xl font-bold mb-8">Quando o Canal é necessário?</h2>
+                    <p class="text-lg text-slate-600 mb-6 leading-relaxed">O tratamento de canal é indicado quando a polpa do dente está inflamada ou infectada, geralmente por cáries profundas ou traumas. Nossa equipe em Maringá utiliza instrumentos rotatórios e localizadores apicais para máxima precisão.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="shield-check" class="text-blue-600"></i> Alívio da dor aguda</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="shield-check" class="text-blue-600"></i> Preservação do dente natural</div>
+                        <div class="flex items-center gap-3 text-slate-600 font-semibold"><i data-lucide="shield-check" class="text-blue-600"></i> Prevenção de infecções graves</div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-[2rem] shadow-xl" data-aos="fade-left">
+                    <h3 class="text-2xl font-bold mb-6">Atendimento em Maringá</h3>
+                    <p class="text-slate-500 mb-6">Especialistas em Endodontia prontos para atender você nos principais bairros:</p>
+                    <div class="grid grid-cols-2 gap-4 text-sm font-bold text-slate-700">
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 01</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Zona 07</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Mandacaru</div>
+                        <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> Vila Operária</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-slate-900 rounded-[3rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 p-12 md:p-20 text-white">
+                    <h2 class="text-4xl font-bold mb-6">Urgência em Canal?</h2>
+                    <p class="text-slate-400 mb-10">Não espere a dor piorar. Solicite agora sua avaliação com um especialista em endodontia em Maringá.</p>
+                </div>
+                <div class="lg:w-1/2 bg-white p-12 md:p-20">
+                    <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="space-y-4">
+                        <input type="hidden" name="procedimento" value="Tratamento de Canal">
+                        <input type="hidden" name="cidade" value="Maringá">
+                        <input type="text" name="nome" required placeholder="Nome Completo" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <input type="tel" name="whatsapp" required placeholder="WhatsApp (44)" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                        <select name="urgencia" class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600">
+                            <option value="urgente">Urgente (Estou com dor)</option>
+                            <option value="esta-semana">Esta semana</option>
+                            <option value="sem-pressa">Sem pressa</option>
+                        </select>
+                        <textarea name="mensagem" rows="3" placeholder="Descreva sua dor ou necessidade..." class="w-full px-5 py-3 rounded-xl bg-slate-50 border-none focus:ring-2 focus:ring-blue-600"></textarea>
+                        <button type="submit" class="btn-primary w-full text-white py-4 rounded-xl font-bold text-lg">Solicitar Avaliação</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-50 py-20 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center gap-2 mb-8"><i data-lucide="stethoscope" class="text-blue-600"></i><span class="text-xl font-bold text-blue-800">OdontoMaringá</span></div>
+            <p class="text-slate-400 text-sm">&copy; 2026 OdontoMaringá - Especialistas em Endodontia Maringá.</p>
+        </div>
+    </footer>
+    <script>lucide.createIcons(); AOS.init({ duration: 1000, once: true });</script>
+</body>
+</html>
+
+```
+
+--- ARQUIVO: tsconfig.json ---
+```json
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "module": "ESNext",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  }
+}
+
+```
+
+--- ARQUIVO: vite.config.ts ---
+```ts
+import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import {defineConfig, loadEnv} from 'vite';
+
+export default defineConfig(({mode}) => {
+  const env = loadEnv(mode, '.', '');
+  return {
+    plugins: [react(), tailwindcss()],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
+    },
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '.'),
+      },
+    },
+    server: {
+      // HMR is disabled in AI Studio via DISABLE_HMR env var.
+      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
+      hmr: process.env.DISABLE_HMR !== 'true',
+    },
+  };
+});
+
+```
+

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentes de Contato Dental em Maringá | Sorriso Perfeito e Natural</title>
+    <meta name="description" content="Transforme seu sorriso com Lentes de Contato Dental em Maringá. Facetas de porcelana ultrafinas para um sorriso perfeito e natural. Avaliação gratuita!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --ink: #0d1b2a; --ink-soft: #3a4a5c; --ink-muted: #7a8a9a;
+            --cream: #f9f5ef; --white: #ffffff;
+            --gold: #c9a84c; --gold-light: #f0e4c4;
+            --teal: #0a7c6e; --teal-light: #e0f2ef;
+            --border: rgba(13,27,42,0.08);
+            --shadow-sm: 0 2px 12px rgba(13,27,42,0.07);
+            --shadow-md: 0 8px 40px rgba(13,27,42,0.12);
+            --shadow-lg: 0 24px 80px rgba(13,27,42,0.18);
+            --r: 16px; --r-lg: 28px;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--ink); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'DM Serif Display', serif; line-height: 1.15; letter-spacing: -0.02em; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(255,255,255,0.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--border); padding: 0 max(24px, 5vw); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-mark { width: 36px; height: 36px; background: var(--ink); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        .logo-mark svg { width: 20px; height: 20px; fill: var(--gold); }
+        .logo-text { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: var(--ink); letter-spacing: -0.02em; }
+        .logo-text span { color: var(--teal); }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .nav-back { font-size: 0.85rem; color: var(--ink-muted); text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+        .nav-back:hover { color: var(--teal); }
+        .nav-back svg { width: 16px; height: 16px; fill: currentColor; }
+        .btn-nav { background: var(--ink); color: var(--white); padding: 10px 22px; border-radius: 50px; font-size: 0.875rem; font-weight: 600; text-decoration: none; transition: background 0.2s; }
+        .btn-nav:hover { background: var(--teal); }
+
+        /* HERO */
+        .hero { min-height: 85vh; padding: 120px max(24px, 5vw) 80px; display: flex; align-items: center; background: var(--cream); position: relative; overflow: hidden; }
+        .hero::after { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(10,124,110,0.08) 0%, transparent 70%); pointer-events: none; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: var(--teal-light); color: var(--teal); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 24px; border: 1px solid rgba(10,124,110,0.15); }
+        .hero h1 { font-size: clamp(2.4rem, 4.5vw, 3.6rem); color: var(--ink); margin-bottom: 22px; }
+        .hero h1 em { font-style: italic; color: var(--teal); }
+        .hero-desc { font-size: 1.1rem; color: var(--ink-soft); max-width: 480px; margin-bottom: 36px; line-height: 1.75; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--teal); color: var(--white); padding: 15px 30px; border-radius: 50px; font-size: 1rem; font-weight: 600; text-decoration: none; transition: background 0.25s, transform 0.25s, box-shadow 0.25s; box-shadow: 0 4px 24px rgba(10,124,110,0.3); }
+        .btn-primary:hover { background: #085e53; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(10,124,110,0.4); }
+        .hero-img-wrap { position: relative; }
+        .hero-img { width: 100%; border-radius: var(--r-lg); box-shadow: var(--shadow-lg); object-fit: cover; height: 480px; }
+        .hero-badge-float { position: absolute; bottom: -18px; left: -18px; background: var(--white); padding: 16px 20px; border-radius: 16px; box-shadow: var(--shadow-md); border: 1px solid var(--border); display: flex; align-items: center; gap: 12px; }
+        .badge-float-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--teal-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .badge-float-icon svg { width: 20px; height: 20px; fill: var(--teal); }
+        .badge-float-text strong { font-size: 0.9rem; color: var(--ink); display: block; }
+        .badge-float-text span { font-size: 0.75rem; color: var(--ink-muted); }
+
+        /* PROOF BAR */
+        .proof-bar { background: var(--ink); padding: 18px max(24px, 5vw); }
+        .proof-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+        .proof-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.65); font-size: 0.85rem; font-weight: 500; }
+        .proof-item svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; }
+        .proof-divider { width: 1px; height: 18px; background: rgba(255,255,255,0.15); }
+
+        /* CONTENT SECTION */
+        .content-section { padding: 96px max(24px, 5vw); }
+        .section-inner { max-width: 1200px; margin: 0 auto; }
+        .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+        .content-grid h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--ink); margin-bottom: 20px; }
+        .content-grid p { font-size: 1rem; color: var(--ink-soft); line-height: 1.75; margin-bottom: 28px; }
+        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.95rem; color: var(--ink-soft); }
+        .feature-list li svg { width: 18px; height: 18px; fill: var(--teal); flex-shrink: 0; margin-top: 2px; }
+        .info-card { background: var(--cream); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 36px; }
+        .info-card h3 { font-size: 1.3rem; color: var(--ink); margin-bottom: 8px; }
+        .info-card > p { font-size: 0.9rem; color: var(--ink-muted); margin-bottom: 24px; }
+        .locations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .location-tag { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; font-weight: 600; color: var(--ink-soft); padding: 10px 14px; background: var(--white); border-radius: 10px; border: 1px solid var(--border); }
+        .location-tag svg { width: 14px; height: 14px; fill: var(--teal); }
+        .section-bg { background: var(--cream); }
+
+        /* CTA SECTION */
+        .cta-section { background: var(--ink); padding: 100px max(24px, 5vw); }
+        .cta-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 460px; gap: 80px; align-items: center; }
+        .cta-section .section-label { color: var(--gold); }
+        .cta-section h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); color: var(--white); margin-bottom: 18px; }
+        .cta-section h2 em { color: var(--gold); font-style: italic; }
+        .cta-section > .cta-inner > div > p { font-size: 1rem; color: rgba(255,255,255,0.55); line-height: 1.75; margin-bottom: 32px; }
+        .trust-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .trust-list li { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+        .trust-list li svg { width: 16px; height: 16px; fill: var(--gold); flex-shrink: 0; }
+
+        /* FORM */
+        .dark-form { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-lg); padding: 40px; }
+        .dark-form-title { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 4px; }
+        .dark-form-sub { font-size: 0.85rem; color: rgba(255,255,255,0.4); margin-bottom: 28px; }
+        .form-group { margin-bottom: 14px; }
+        .form-group label { display: block; font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.5); margin-bottom: 6px; letter-spacing: 0.01em; }
+        .form-control { width: 100%; padding: 13px 16px; border: 1.5px solid rgba(255,255,255,0.15); border-radius: 12px; font-size: 0.95rem; font-family: 'DM Sans', sans-serif; color: var(--white); background: rgba(255,255,255,0.08); transition: border-color 0.2s, background 0.2s, box-shadow 0.2s; outline: none; -webkit-appearance: none; }
+        .form-control::placeholder { color: rgba(255,255,255,0.3); }
+        .form-control:focus { border-color: var(--gold); background: rgba(255,255,255,0.12); box-shadow: 0 0 0 3px rgba(201,168,76,0.15); }
+        select.form-control { cursor: pointer; }
+        select.form-control option { background: #1a2a3a; color: white; }
+        .btn-form { width: 100%; background: var(--gold); color: var(--ink); border: none; padding: 16px; border-radius: 12px; font-size: 1rem; font-weight: 700; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 4px; letter-spacing: 0.01em; }
+        .btn-form:hover { background: #b8943d; transform: translateY(-1px); }
+        .form-trust { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; font-size: 0.72rem; color: rgba(255,255,255,0.3); }
+        .form-trust svg { width: 12px; height: 12px; opacity: 0.6; }
+
+        /* FOOTER */
+        footer { background: var(--cream); padding: 56px max(24px, 5vw) 32px; border-top: 1px solid var(--border); }
+        .footer-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 32px; }
+        .footer-brand p { margin-top: 10px; font-size: 0.85rem; color: var(--ink-muted); max-width: 300px; line-height: 1.6; }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; padding-top: 4px; }
+        .footer-links a { font-size: 0.85rem; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--teal); }
+        .footer-bottom { max-width: 1200px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--ink-muted); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+
+        /* WA FLOAT */
+        .wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 200; background: #25d366; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(37,211,102,0.4); text-decoration: none; transition: transform 0.25s; }
+        .wa-float:hover { transform: scale(1.08); }
+        .wa-float svg { width: 26px; height: 26px; fill: white; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .hero { min-height: auto; padding-bottom: 60px; }
+            .content-grid { grid-template-columns: 1fr; gap: 40px; }
+            .cta-inner { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2.2rem; }
+            .dark-form { padding: 28px 20px; }
+            .proof-divider { display: none; }
+        }
+    </style>
+
+</head>
+<body>
+
+
+<nav>
+    <div class="nav-inner">
+        <a class="logo" href="index.html">
+            <div class="logo-mark">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
+            </div>
+            <span class="logo-text">Odonto<span>Maringá</span></span>
+        </a>
+        <div class="nav-right">
+            <a class="nav-back" href="index.html">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+                Todas as especialidades
+            </a>
+            <a class="btn-nav" href="#contato">Avaliação Gratuita</a>
+        </div>
+    </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="topo">
+    <div class="hero-inner">
+        <div class="hero-content">
+            <span class="hero-badge">Estética Avançada · Maringá PR</span>
+            <h1>Lentes de Contato Dental<br><em>em Maringá</em></h1>
+            <p class="hero-desc">O sorriso dos seus sonhos com facetas de porcelana ultrafinas. Transformação estética completa com mínimo desgaste dental e resultado duradouro.</p>
+            <a href="#contato" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+                Solicitar avaliação gratuita
+            </a>
+        </div>
+        <div class="hero-img-wrap reveal">
+            <img class="hero-img" src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=800" alt="Lentes de Contato Dental em Maringá | Sorriso Perfeito e Natural">
+            <div class="hero-badge-float">
+                <div class="badge-float-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+                <div class="badge-float-text"><strong>Mínimo desgaste dental</strong><span>Resultado natural e duradouro</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="proof-bar">
+    <div class="proof-bar-inner">
+        <div class="proof-item"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>Nota 4.9 no Google</div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>Especialistas com CRO-PR</div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>+2.400 pacientes atendidos</div>
+        <div class="proof-divider"></div>
+        <div class="proof-item"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>Retorno em até 24h</div>
+    </div>
+</div>
+
+
+<!-- CONTENT -->
+<section class="content-section section-bg">
+    <div class="section-inner">
+        <div class="content-grid">
+            <div class="reveal">
+                <span class="section-label">Por que lentes de contato?</span>
+                <h2>A transformação mais natural do sorriso</h2>
+                <p>As lentes de contato dental são lâminas de porcelana extremamente finas (entre 0,3 e 0,5 mm) coladas sobre a superfície dos dentes. Corrigem cor, forma e alinhamento com o mínimo desgaste do esmalte, preservando ao máximo a estrutura dental original.</p>
+                <ul class="feature-list">
+                    <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Correção de dentes manchados ou escurecidos</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Fechamento de espaços (diastemas)</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Correção de dentes desgastados ou lascados</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Harmonização do tamanho e formato dos dentes</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Resultado com aparência 100% natural</li>
+                </ul>
+            </div>
+            <div class="info-card reveal">
+                <h3>Estetas em Maringá</h3>
+                <p>Especialistas nos principais bairros de Maringá:</p>
+                <div class="locations-grid">
+                    <div class="location-tag"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Zona 01 (Centro)</div>
+<div class="location-tag"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Zona 07</div>
+<div class="location-tag"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Jd. Alvorada</div>
+<div class="location-tag"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Vila Operária</div>
+<div class="location-tag"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Mandacaru</div>
+<div class="location-tag"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>Sarandi</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA + FORM -->
+<section class="cta-section" id="contato">
+    <div class="cta-inner">
+        <div class="reveal">
+            <span class="section-label">Avaliação gratuita</span>
+            <h2>Conquiste o sorriso <em>dos seus sonhos</em></h2>
+            <p>Solicite sua avaliação em Maringá e descubra como as lentes de contato dental podem transformar sua autoestima e confiança.</p>
+            <ul class="trust-list">
+                <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Avaliação gratuita e sem compromisso</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Especialistas em Dentística com CRO-PR</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Porcelana de alta translucidez e durabilidade</li>
+<li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Resultado visível em apenas 2 sessões</li>
+            </ul>
+        </div>
+        
+<div class="dark-form reveal">
+    <div class="dark-form-title">Avaliação gratuita</div>
+    <div class="dark-form-sub">Retorno via WhatsApp em até 24 horas</div>
+    <form name="captura-leads-lentes-de-contato-dental" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="procedimento" value="Lentes de Contato Dental">
+        <input type="hidden" name="cidade" value="Maringá">
+        <input type="text" name="bot-field" style="display:none">
+        <div class="form-group"><label>Nome completo</label><input type="text" name="nome" required placeholder="Seu nome" class="form-control"></div>
+        <div class="form-group"><label>WhatsApp</label><input type="tel" name="whatsapp" required placeholder="(44) 99999-9999" class="form-control"></div>
+        
+        <div class="form-group"><label>Mensagem (opcional)</label><textarea name="mensagem" class="form-control" rows="3" placeholder="O que você gostaria de mudar no seu sorriso?"></textarea></div>
+        <button type="submit" class="btn-form">Solicitar avaliação gratuita →</button>
+        <p class="form-trust"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 015 5v3h1a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2h1V7a5 5 0 015-5z"/></svg>Dados protegidos. Sem spam.</p>
+    </form>
+</div>
+
+    </div>
+</section>
+
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a class="logo" href="index.html">
+                <div class="logo-mark">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
+                </div>
+                <span class="logo-text">Odonto<span>Maringá</span></span>
+            </a>
+            <p>Conectando pacientes aos melhores especialistas em odontologia de Maringá, PR.</p>
+        </div>
+        <div class="footer-links">
+            <a href="index.html">Início</a>
+            <a href="implante-dentario-maringa.html">Implante</a>
+            <a href="clareamento-dental-maringa.html">Clareamento</a>
+            <a href="ortodontista-maringa.html">Ortodontia</a>
+            <a href="harmonizacao-orofacial-maringa.html">Harmonização</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>© 2026 OdontoMaringá · Maringá, PR</span>
+        <span>Todos os direitos reservados</span>
+    </div>
+</footer>
+
+
+<a class="wa-float" href="https://wa.me/5544999999999?text=Ol%C3%A1!%20Vi%20o%20OdontoMaring%C3%A1%20e%20gostaria%20de%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver(entries => {
+        entries.forEach((e, i) => { if (e.isIntersecting) { e.target.style.transitionDelay = (i * 0.05) + 's'; e.target.classList.add('visible'); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+    reveals.forEach(el => obs.observe(el));
+
+    document.querySelectorAll('input[type="tel"]').forEach(input => {
+        input.addEventListener('input', function() {
+            let v = this.value.replace(/\D/g,'').slice(0,11);
+            let o = '';
+            if (v.length > 0) o = '(' + v.slice(0,2);
+            if (v.length >= 3) o += ') ' + v.slice(2,7);
+            if (v.length >= 8) o += '-' + v.slice(7,11);
+            this.value = o;
+        });
+    });
+</script>
+
+</body>
+</html>
