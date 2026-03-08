@@ -740,8 +740,8 @@ footer {
   z-index: 200;
   background: var(--teal);
   color: var(--white);
-  display: flex; align-items: center; gap: 10px;
-  padding: 14px 22px;
+  display: flex; align-items: center; gap: 0;
+  padding: 14px;
   border-radius: 50px;
   box-shadow: 0 8px 32px rgba(10,124,110,0.4);
   text-decoration: none;
@@ -759,8 +759,10 @@ footer {
   box-shadow: 0 12px 40px rgba(10,124,110,0.5);
 }
 
-.cta-float svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
-.cta-float span { color: white; }
+.cta-float svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
+
+/* Mobile: só ícone */
+.cta-float span { display: none; }
 
 /* ── ANIMAÇÕES ───────────────────────────────────────────────────────────── */
 @keyframes slideUp {
@@ -832,6 +834,7 @@ footer {
 
   .content-grid { gap: 72px; }
 
-  .cta-float { bottom: 28px; right: 28px; width: 58px; height: 58px; }
-  .cta-float svg { width: 28px; height: 28px; }
+  .cta-float { bottom: 28px; right: 28px; padding: 14px 22px; gap: 10px; }
+  .cta-float svg { width: 20px; height: 20px; }
+  .cta-float span { display: inline; color: white; }
 }
