@@ -562,7 +562,8 @@ textarea.form-control { resize: vertical; min-height: 90px; }
 .step-num {
   font-family: 'DM Serif Display', serif;
   font-size: 3rem;
-  color: var(--teal-light);
+  color: var(--teal);
+  opacity: 0.25;
   line-height: 1;
   margin-bottom: 12px;
 }
