@@ -1,5 +1,6 @@
 ---
 import { GA4, MARCA } from '../constants';
+import '../styles/global.css';
 
 interface Props {
   title: string;
@@ -41,9 +42,6 @@ const canonicalURL = new URL(Astro.url.pathname, 'https://odontomaringa.netlify.
     href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
     rel="stylesheet"
   />
-
-  <!-- Design System Global -->
-  <link rel="stylesheet" href="/src/styles/global.css" />
 
   <!-- Google Analytics GA4 -->
   <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4.measurementId}`}></script>
