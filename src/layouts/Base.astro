@@ -1,0 +1,142 @@
+---
+import { GA4, MARCA } from '../constants';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage = '/og-default.jpg' } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, 'https://odontomaringa.netlify.app');
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Design System Global -->
+  <link rel="stylesheet" href="/src/styles/global.css" />
+
+  <!-- Google Analytics GA4 -->
+  <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4.measurementId}`}></script>
+  <script define:vars={{ measurementId: GA4.measurementId }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', measurementId);
+  </script>
+</head>
+
+<body>
+
+  <!-- Nav é injetado por cada página/layout para permitir variantes (home vs especialidade) -->
+  <slot name="nav" />
+
+  <!-- Conteúdo principal da página -->
+  <slot />
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="/">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/>
+            </svg>
+          </div>
+          <span class="logo-text">Odonto<span>Maringá</span></span>
+        </a>
+        <p>{MARCA.descricao}</p>
+      </div>
+      <div class="footer-links">
+        <a href="/">Início</a>
+        <a href="/implante-dentario-maringa">Implante</a>
+        <a href="/clareamento-dental-maringa">Clareamento</a>
+        <a href="/ortodontista-maringa">Ortodontia</a>
+        <a href="/harmonizacao-orofacial-maringa">Harmonização</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>{MARCA.copyright}</span>
+      <span>Todos os direitos reservados</span>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Flutuante -->
+  <slot name="wa-float" />
+
+  <!-- Scripts globais -->
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Stagger nos cards de especialidade
+    document.querySelectorAll('.specialties-grid .specialty-card').forEach((el, i) => {
+      (el as HTMLElement).style.transitionDelay = `${i * 0.08}s`;
+    });
+
+    // Máscara de telefone
+    document.querySelectorAll('input[type="tel"]').forEach(input => {
+      input.addEventListener('input', function (this: HTMLInputElement) {
+        let v = this.value.replace(/\D/g, '').slice(0, 11);
+        let out = '';
+        if (v.length > 0) out = '(' + v.slice(0, 2);
+        if (v.length >= 3) out += ') ' + v.slice(2, 7);
+        if (v.length >= 8) out += '-' + v.slice(7, 11);
+        this.value = out;
+      });
+    });
+
+    // Menu hamburguer
+    const menuBtn = document.querySelector('.nav-menu-btn');
+    const drawer  = document.querySelector('.nav-drawer');
+    menuBtn?.addEventListener('click', () => {
+      menuBtn.classList.toggle('open');
+      drawer?.classList.toggle('open');
+    });
+    // Fechar drawer ao clicar num link
+    drawer?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menuBtn?.classList.remove('open');
+        drawer.classList.remove('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,13 +1,358 @@
 ---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import WaFloat from '../components/WaFloat.astro';
+import ProofBar from '../components/ProofBar.astro';
+import LeadForm from '../components/LeadForm.astro';
+import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
 ---
-<!DOCTYPE html>
-<html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OdontoMaringá — teste Astro</title>
-  </head>
-  <body>
-    <h1>Astro funcionando ✅</h1>
-  </body>
-</html>
+
+<Base
+  title="OdontoMaringá — Especialistas em Odontologia em Maringá, PR"
+  description="Encontre o melhor dentista em Maringá para implantes, clareamento, harmonização e ortodontia. Avaliação com especialistas próximos a você."
+>
+  <Nav slot="nav" variant="home" />
+  <WaFloat slot="wa-float" mensagem="geral" />
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Odontologia Especializada · Maringá PR
+        </span>
+        <h1>Seu próximo dentista<br>em <em>Maringá</em> está aqui</h1>
+        <p class="hero-desc">Conectamos você ao especialista ideal — implantes, clareamento, ortodontia, harmonização e mais. Avaliação sem compromisso.</p>
+        <div class="hero-ctas">
+          <a href="#contato" class="btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V4a2 2 0 012-2zm4 17a1 1 0 100-2 1 1 0 000 2z"/></svg>
+            Agendar Avaliação
+          </a>
+          <a href="#especialidades" class="btn-secondary">Ver Especialidades</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number">+2.400</span>
+            <span class="stat-label">Pacientes conectados</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">97%</span>
+            <span class="stat-label">Satisfação comprovada</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">24h</span>
+            <span class="stat-label">Retorno garantido</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Form -->
+      <div class="hero-card">
+        <div class="card-header">
+          <div class="card-header-label">Fale com um especialista</div>
+          <h3>Quero minha avaliação</h3>
+          <p>Retorno em até 24 horas via WhatsApp</p>
+        </div>
+        <div class="card-body">
+          <LeadForm
+            formName="heroHome"
+            procedimento="Geral"
+            variant="light"
+            showMensagem={false}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROOF BAR ── -->
+  <ProofBar />
+
+  <!-- ── ESPECIALIDADES ── -->
+  <section id="especialidades">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-label">Tratamentos disponíveis</span>
+        <h2>O especialista certo<br>para o seu sorriso</h2>
+        <p>Conectamos você com dentistas especializados em Maringá para cada tipo de tratamento.</p>
+      </div>
+      <div class="specialties-grid">
+        {ESPECIALIDADES.map((esp, i) => (
+          <a class="specialty-card reveal" href={`/${esp.slug}`} style={`transition-delay: ${i * 0.08}s`}>
+            <div class="specialty-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
+            </div>
+            <h3>{esp.titulo}</h3>
+            <p>{esp.descricao}</p>
+            <span class="specialty-link">
+              Saiba mais
+              <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── COMO FUNCIONA ── -->
+  <section class="how-section" id="como-funciona">
+    <div class="section-inner">
+      <div class="section-header reveal" style="text-align:center; max-width:600px; margin: 0 auto 60px;">
+        <span class="section-label">Processo simples</span>
+        <h2>Como funciona?</h2>
+        <p>Do preenchimento do formulário à sua consulta em menos de 24 horas</p>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Preencha o formulário</h3>
+          <p>Informe seu nome, WhatsApp e o tratamento que você busca. Leva menos de 60 segundos.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Entramos em contato</h3>
+          <p>Nossa equipe valida seu interesse e te conecta com o especialista mais adequado em Maringá.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Avaliação</h3>
+          <p>O dentista realiza uma avaliação completa e apresenta as melhores opções de tratamento.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Cuide do seu sorriso</h3>
+          <p>Inicie seu tratamento com segurança, preço justo e acompanhamento especializado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DEPOIMENTOS ── -->
+  <section id="depoimentos">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-label">O que dizem os pacientes</span>
+        <h2>Sorrisos transformados<br>em Maringá</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial reveal">
+          <div class="stars">
+            {[1,2,3,4,5].map(() => <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>)}
+          </div>
+          <blockquote>"Fiz meu implante através do OdontoMaringá e foi a melhor experiência que já tive com dentista. O atendimento foi impecável e o resultado é incrível."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">C</div>
+            <div>
+              <div class="author-name">Carla M.</div>
+              <div class="author-detail">Implante Dentário · Zona 07</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="stars">
+            {[1,2,3,4,5].map(() => <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>)}
+          </div>
+          <blockquote>"Em menos de 1 dia me retornaram e já agendei minha avaliação. Fiz o clareamento e estou amando o resultado. Super recomendo para quem está buscando dentista em Maringá."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">R</div>
+            <div>
+              <div class="author-name">Rafael T.</div>
+              <div class="author-detail">Clareamento · Mandacaru</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal">
+          <div class="stars">
+            {[1,2,3,4,5].map(() => <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>)}
+          </div>
+          <blockquote>"Precisava de urgência com um canal e me atenderam no mesmo dia. Profissional muito capacitado, sem dor nenhuma. Já indiquei para toda a família."</blockquote>
+          <div class="testimonial-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Ana Paula S.</div>
+              <div class="author-detail">Tratamento de Canal · Vila Operária</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA FINAL ── -->
+  <section class="cta-band" id="contato">
+    <div class="cta-band-inner">
+      <div class="reveal">
+        <span class="section-label" style="color: var(--gold)">Avaliação</span>
+        <h2>Pronto para cuidar<br>do seu <em>sorriso?</em></h2>
+        <p>Preencha o formulário e nossa equipe entrará em contato em até 24 horas para conectar você ao especialista certo em Maringá.</p>
+        <ul class="trust-list">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Avaliação sem compromisso
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Especialistas com registro ativo no CRO-PR
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Retorno garantido em até 24 horas
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Seus dados não são compartilhados com terceiros
+          </li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <LeadForm
+          formName="ctaHome"
+          procedimento="Geral"
+          variant="dark"
+          showMensagem={true}
+          titulo="Solicitar avaliação"
+          subtitulo="Atendimento via WhatsApp em Maringá"
+        />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+/* === CSS ESPECÍFICO: index.astro — Hero Home === */
+.hero {
+  min-height: 100svh;
+  padding: 100px 20px 60px;
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(10,124,110,0.08) 0%, transparent 70%);
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(10,124,110,0.15);
+}
+
+.hero-badge svg { width: 14px; height: 14px; fill: var(--teal); }
+
+.hero h1 {
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.hero h1 em { font-style: italic; color: var(--teal); }
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 32px;
+  line-height: 1.7;
+}
+
+.hero-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.stat-number {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.8rem;
+  color: var(--ink);
+  display: block;
+  letter-spacing: -0.03em;
+}
+
+.stat-label { font-size: 0.78rem; color: var(--ink-muted); font-weight: 500; }
+
+/* Hero card */
+.hero-card {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.card-header {
+  background: var(--ink);
+  padding: 24px 28px;
+  color: var(--white);
+}
+
+.card-header-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.card-header h3 { font-size: 1.3rem; color: var(--white); }
+.card-header p { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+.card-body { padding: 28px; }
+
+@media (min-width: 768px) {
+  .hero { padding: 120px max(24px, 5vw) 80px; align-items: center; }
+  .hero-ctas { flex-direction: row; }
+  .hero-stats { gap: 40px; }
+  .stat-number { font-size: 2rem; }
+}
+
+@media (min-width: 1024px) {
+  .hero-inner { grid-template-columns: 1fr 420px; gap: 64px; }
+  .hero-card { animation: float 6s ease-in-out infinite; }
+}
+</style>

@@ -1,0 +1,106 @@
+---
+import { FORMS } from '../constants';
+
+interface Props {
+  /** Nome do formulário Netlify — chave de FORMS */
+  formName: keyof typeof FORMS;
+  /** Valor do campo oculto procedimento */
+  procedimento: string;
+  /** Variante visual: 'light' (fundo claro) | 'dark' (fundo escuro) */
+  variant?: 'light' | 'dark';
+  /** Mostrar campo de mensagem opcional */
+  showMensagem?: boolean;
+  /** Mostrar campo de urgência (usado no canal) */
+  showUrgencia?: boolean;
+  /** Título exibido acima do form (apenas variant dark) */
+  titulo?: string;
+  /** Subtítulo (apenas variant dark) */
+  subtitulo?: string;
+}
+
+const {
+  formName,
+  procedimento,
+  variant = 'light',
+  showMensagem = false,
+  showUrgencia = false,
+  titulo = 'Solicitar avaliação',
+  subtitulo = 'Atendimento via WhatsApp em Maringá',
+} = Astro.props;
+
+const name = FORMS[formName] as string;
+---
+
+<div class:list={[{ 'dark-form': variant === 'dark' }]}>
+  {variant === 'dark' && (
+    <>
+      <div class="dark-form-title">{titulo}</div>
+      <div class="dark-form-sub">{subtitulo}</div>
+    </>
+  )}
+
+  <form
+    name={name}
+    method="POST"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+    action={FORMS.successRedirect}
+  >
+    <input type="hidden" name="procedimento" value={procedimento} />
+    <input type="hidden" name="cidade" value="Maringá" />
+    <input type="text" name="bot-field" style="display:none" />
+
+    <div class="form-group">
+      <label>Nome completo</label>
+      <input type="text" name="nome" required placeholder="Seu nome" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>WhatsApp</label>
+      <input type="tel" name="whatsapp" required placeholder="(44) 99999-9999" class="form-control" />
+    </div>
+
+    {showUrgencia && (
+      <div class="form-group">
+        <label>Urgência</label>
+        <select name="urgencia" class="form-control">
+          <option value="urgente">Urgente — estou com dor</option>
+          <option value="esta-semana">Esta semana</option>
+          <option value="sem-pressa">Sem pressa</option>
+        </select>
+      </div>
+    )}
+
+    {!showUrgencia && (
+      <div class="form-group">
+        <label>Tratamento de interesse</label>
+        <select name="servico" class="form-control">
+          <option value="">Selecione</option>
+          <option value="implante">Implante Dentário</option>
+          <option value="clareamento">Clareamento Dental</option>
+          <option value="ortodontia">Aparelho / Ortodontia</option>
+          <option value="harmonizacao">Harmonização Orofacial</option>
+          <option value="canal">Tratamento de Canal</option>
+          <option value="protese">Prótese Dentária</option>
+          <option value="geral">Consulta Geral</option>
+        </select>
+      </div>
+    )}
+
+    {showMensagem && (
+      <div class="form-group">
+        <label>Mensagem (opcional)</label>
+        <textarea name="mensagem" class="form-control" rows="3" placeholder="Alguma informação adicional?"></textarea>
+      </div>
+    )}
+
+    <button type="submit" class="btn-form">Solicitar avaliação →</button>
+
+    <p class="form-trust">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2a5 5 0 015 5v3h1a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2h1V7a5 5 0 015-5zm0 12a2 2 0 100 4 2 2 0 000-4zm0-10a3 3 0 00-3 3v3h6V7a3 3 0 00-3-3z"/>
+      </svg>
+      Dados protegidos. Sem spam.
+    </p>
+  </form>
+</div>
