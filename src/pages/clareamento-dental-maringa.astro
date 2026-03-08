@@ -1,0 +1,77 @@
+---
+import Especialidade from '../layouts/Especialidade.astro';
+---
+
+<Especialidade
+  title="Clareamento Dental em Maringá | Sorriso Branco e Radiante"
+  description="Transforme seu sorriso com Clareamento Dental em Maringá. Técnicas a laser e caseiras com supervisão profissional. Agende sua avaliação."
+  badge="Clareamento Dental · Maringá PR"
+  h1="Clareamento Dental"
+  h1Em="Maringá"
+  descricao="Dentes mais brancos em poucas sessões com técnicas seguras e supervisionadas. Resultado natural, duradouro e sem sensibilidade excessiva."
+  procedimento="Clareamento Dental"
+  formName="clareamento"
+  mensagemWa="clareamento"
+>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="content-grid">
+        <div class="reveal">
+          <span class="section-label">Técnicas disponíveis</span>
+          <h2>Clareamento com segurança e resultado</h2>
+          <p>O clareamento dental profissional utiliza géis de peróxido em concentrações adequadas, aplicados por especialistas que garantem resultado sem agredir o esmalte.</p>
+          <p>Existem duas modalidades principais — a laser, feita em consultório em sessões rápidas, e a caseira, realizada com moldeiras personalizadas em casa, sob orientação profissional.</p>
+          <ul class="feature-list">
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Até 8 tons mais claro em poucas sessões
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Técnica a laser ou caseira supervisionada
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Protocolo anti-sensibilidade incluído
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Resultado dura de 1 a 3 anos com manutenção simples
+            </li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="info-card">
+            <h3>Atendemos em toda Maringá</h3>
+            <p>Clínicas parceiras nas principais regiões da cidade</p>
+            <div class="locations-grid">
+              {['Zona 01 / Centro','Zona 07','Mandacaru','Vila Operária','Jardim Alvorada','Novo Centro'].map(l => (
+                <div class="location-tag">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  {l}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-bg">
+    <div class="section-inner">
+      <div class="section-header reveal" style="text-align:center; max-width:600px; margin: 0 auto 48px;">
+        <span class="section-label">Etapas do tratamento</span>
+        <h2>Como funciona o clareamento?</h2>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step"><div class="step-num">01</div><h3>Avaliação bucal</h3><p>Verificação da saúde gengival e do esmalte antes de iniciar o tratamento.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Aplicação do gel</h3><p>Gel clareador aplicado com proteção da gengiva e ativação por luz LED/laser.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Sessões de reforço</h3><p>1 a 3 sessões dependendo do tom desejado e da coloração inicial dos dentes.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Manutenção em casa</h3><p>Moldeiras personalizadas para retoques periódicos e manutenção do resultado.</p></div>
+      </div>
+    </div>
+  </section>
+
+</Especialidade>

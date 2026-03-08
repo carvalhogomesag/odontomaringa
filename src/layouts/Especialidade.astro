@@ -1,0 +1,217 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import WaFloat from '../components/WaFloat.astro';
+import ProofBar from '../components/ProofBar.astro';
+import LeadForm from '../components/LeadForm.astro';
+import type { FORMS, WHATSAPP } from '../constants';
+
+interface Props {
+  title: string;
+  description: string;
+  badge: string;
+  h1: string;
+  h1Em?: string;
+  descricao: string;
+  procedimento: string;
+  formName: keyof typeof FORMS;
+  mensagemWa: keyof typeof WHATSAPP.mensagens;
+  showUrgencia?: boolean;
+}
+
+const {
+  title,
+  description,
+  badge,
+  h1,
+  h1Em,
+  descricao,
+  procedimento,
+  formName,
+  mensagemWa,
+  showUrgencia = false,
+} = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <Nav slot="nav" variant="especialidade" />
+  <WaFloat slot="wa-float" mensagem={mensagemWa} />
+
+  <!-- ── HERO ── -->
+  <section class="esp-hero">
+    <div class="esp-hero-inner">
+      <div class="esp-hero-content">
+        <span class="hero-badge">{badge}</span>
+        <h1>{h1}{h1Em && <> em <em>{h1Em}</em></>}</h1>
+        <p class="hero-desc">{descricao}</p>
+        <a href="#contato" class="btn-primary" style="width:auto">
+          Agendar Avaliação →
+        </a>
+      </div>
+      <div class="esp-hero-form">
+        <div class="card-header">
+          <div class="card-header-label">Fale com um especialista</div>
+          <h3>Quero minha avaliação</h3>
+          <p>Retorno em até 24 horas via WhatsApp</p>
+        </div>
+        <div class="card-body">
+          <LeadForm
+            formName={formName}
+            procedimento={procedimento}
+            variant="light"
+            showUrgencia={showUrgencia}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ProofBar />
+
+  <!-- Conteúdo específico da especialidade -->
+  <slot />
+
+  <!-- ── CTA FINAL ── -->
+  <section class="cta-section" id="contato">
+    <div class="cta-inner">
+      <div class="reveal">
+        <span class="section-label">Avaliação</span>
+        <h2>Pronto para cuidar<br>do seu <em>sorriso?</em></h2>
+        <p>Preencha o formulário e nossa equipe entrará em contato em até 24 horas.</p>
+        <ul class="trust-list">
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Avaliação sem compromisso
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Especialistas com registro ativo no CRO-PR
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Retorno garantido em até 24 horas
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Dados protegidos. Sem spam.
+          </li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <LeadForm
+          formName={formName}
+          procedimento={procedimento}
+          variant="dark"
+          showMensagem={true}
+          showUrgencia={showUrgencia}
+          titulo="Solicitar avaliação"
+          subtitulo="Retorno via WhatsApp em até 24 horas"
+        />
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+/* === CSS ESPECÍFICO: Especialidade.astro — Hero === */
+.esp-hero {
+  min-height: 85vh;
+  padding: 100px 20px 60px;
+  display: flex;
+  align-items: center;
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.esp-hero::after {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(10,124,110,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.esp-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(10,124,110,0.15);
+  display: block;
+  width: fit-content;
+}
+
+.esp-hero-content h1 {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  color: var(--ink);
+  margin-bottom: 20px;
+}
+
+.esp-hero-content h1 em { font-style: italic; color: var(--teal); }
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  line-height: 1.75;
+  max-width: 520px;
+}
+
+.esp-hero-form {
+  background: var(--white);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.card-header {
+  background: var(--ink);
+  padding: 24px 28px;
+}
+
+.card-header-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.card-header h3 { font-size: 1.3rem; color: var(--white); font-family: 'DM Serif Display', serif; }
+.card-header p  { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 4px; }
+
+.card-body { padding: 28px; }
+
+@media (min-width: 768px) {
+  .esp-hero { padding: 120px max(24px, 5vw) 80px; }
+}
+
+@media (min-width: 1024px) {
+  .esp-hero-inner { grid-template-columns: 1fr 1fr; gap: 64px; }
+}
+</style>

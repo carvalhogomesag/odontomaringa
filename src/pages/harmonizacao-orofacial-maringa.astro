@@ -1,0 +1,66 @@
+---
+import Especialidade from '../layouts/Especialidade.astro';
+---
+
+<Especialidade
+  title="Harmonização Orofacial em Maringá | Botox e Preenchimento"
+  description="Harmonização Orofacial em Maringá com especialistas. Botox, preenchimento labial, fios e bioestimuladores. Agende sua avaliação."
+  badge="Harmonização Orofacial · Maringá PR"
+  h1="Harmonização Orofacial"
+  h1Em="Maringá"
+  descricao="Realce sua beleza natural com procedimentos minimamente invasivos. Botox, preenchimento, fios de sustentação e bioestimuladores para um rosto mais equilibrado."
+  procedimento="Harmonização Orofacial"
+  formName="harmonizacao"
+  mensagemWa="harmonizacao"
+>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="content-grid">
+        <div class="reveal">
+          <span class="section-label">Procedimentos disponíveis</span>
+          <h2>Beleza natural com técnica e precisão</h2>
+          <p>A harmonização orofacial é uma área da odontologia estética que utiliza procedimentos minimamente invasivos para equilibrar as proporções do rosto, suavizar marcas de expressão e realçar traços naturais.</p>
+          <p>Todos os procedimentos são realizados por dentistas com formação específica em harmonização, garantindo segurança e resultado compatível com sua fisionomia.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Toxina botulínica (Botox) para expressão e bruxismo</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Preenchimento labial e de sulcos</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Fios de PDO para sustentação</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Bioestimuladores de colágeno</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Resultado natural e progressivo</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="info-card">
+            <h3>Atendemos em toda Maringá</h3>
+            <p>Clínicas parceiras nas principais regiões da cidade</p>
+            <div class="locations-grid">
+              {['Zona 01 / Centro','Zona 07','Mandacaru','Vila Operária','Jardim Alvorada','Novo Centro'].map(l => (
+                <div class="location-tag">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  {l}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-bg">
+    <div class="section-inner">
+      <div class="section-header reveal" style="text-align:center; max-width:600px; margin: 0 auto 48px;">
+        <span class="section-label">Como funciona</span>
+        <h2>Do planejamento ao resultado</h2>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step"><div class="step-num">01</div><h3>Consulta e análise facial</h3><p>Avaliação das proporções do rosto e definição do protocolo ideal para seu perfil.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Planejamento personalizado</h3><p>Protocolo desenhado respeitando suas características naturais e objetivos estéticos.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Aplicação dos procedimentos</h3><p>Realizado com anestesia tópica ou local. Maioria dos procedimentos dura menos de 1 hora.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Acompanhamento</h3><p>Retorno para avaliação do resultado e ajustes se necessário.</p></div>
+      </div>
+    </div>
+  </section>
+
+</Especialidade>

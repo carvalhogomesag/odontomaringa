@@ -1,0 +1,246 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import WaFloat from '../components/WaFloat.astro';
+import { MARCA, WHATSAPP, GA4 } from '../constants';
+---
+
+<Base
+  title="Solicitação Recebida | OdontoMaringá"
+  description="Sua solicitação foi recebida. Em breve um especialista em Maringá entrará em contato."
+>
+  <Nav slot="nav" variant="especialidade" />
+  <WaFloat slot="wa-float" mensagem="formulario" />
+
+  <main class="obrigado-main">
+    <div class="thank-card">
+
+      <!-- Ícone animado -->
+      <div class="check-wrap">
+        <svg viewBox="0 0 52 52">
+          <circle class="circle" cx="26" cy="26" r="25" fill="none"/>
+          <polyline class="check" points="14,26 22,34 38,18" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="badge-tag">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+        </svg>
+        Solicitação recebida
+      </div>
+
+      <h1>Pronto! Em breve<br><em>você será atendido</em></h1>
+
+      <p>Sua solicitação chegou até nós. Um especialista parceiro em Maringá vai analisar seu caso e entrar em contato em breve.</p>
+      <p>Fique de olho no seu WhatsApp.</p>
+
+      <div class="obrigado-steps">
+        <div class="obrigado-step">
+          <div class="step-num-badge">1</div>
+          <div class="step-text">
+            <strong>Análise do seu caso</strong>
+            <span>Um especialista revisa suas informações</span>
+          </div>
+        </div>
+        <div class="obrigado-step">
+          <div class="step-num-badge">2</div>
+          <div class="step-text">
+            <strong>Contato pelo WhatsApp</strong>
+            <span>Em horário comercial, normalmente no mesmo dia</span>
+          </div>
+        </div>
+        <div class="obrigado-step">
+          <div class="step-num-badge">3</div>
+          <div class="step-text">
+            <strong>Agendamento da avaliação</strong>
+            <span>Na clínica parceira mais adequada para você</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="obrigado-divider"></div>
+
+      <a href="/" class="btn-primary" style="width: auto; padding: 15px 32px;">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+          <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+        </svg>
+        Voltar à página inicial
+      </a>
+
+      <p class="wa-hint">
+        Prefere falar agora?
+        <a href={WHATSAPP.link(WHATSAPP.mensagens.formulario)} target="_blank" rel="noopener">
+          Clique para abrir o WhatsApp →
+        </a>
+      </p>
+
+    </div>
+  </main>
+</Base>
+
+<!-- Evento de conversão GA4 disparado ao carregar a página -->
+<script define:vars={{ measurementId: GA4.measurementId }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('event', 'conversion', {
+    event_category: 'lead',
+    event_label: 'form_submission',
+    value: 1,
+    send_to: measurementId,
+  });
+</script>
+
+<style>
+/* === CSS ESPECÍFICO: obrigado.astro === */
+.obrigado-main {
+  min-height: 100vh;
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px 60px;
+}
+
+.thank-card {
+  max-width: 580px;
+  width: 100%;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 40px 28px;
+  text-align: center;
+  animation: fadeUp 0.55s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.check-wrap {
+  margin: 0 auto 28px;
+  width: 76px; height: 76px;
+  border-radius: 50%;
+  background: var(--teal-light);
+  display: flex; align-items: center; justify-content: center;
+}
+
+.check-wrap svg {
+  width: 38px; height: 38px;
+  fill: none;
+  stroke: var(--teal);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.check-wrap svg .circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: drawCircle 0.5s ease 0.2s forwards;
+}
+
+.check-wrap svg .check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: drawCheck 0.35s ease 0.65s forwards;
+}
+
+@keyframes drawCircle { to { stroke-dashoffset: 0; } }
+@keyframes drawCheck  { to { stroke-dashoffset: 0; } }
+
+.badge-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--teal-light);
+  color: var(--teal);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 50px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(10,124,110,0.15);
+}
+
+.thank-card h1 {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+.thank-card h1 em { font-style: italic; color: var(--teal); }
+
+.thank-card p {
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  line-height: 1.75;
+  margin-bottom: 10px;
+}
+
+.obrigado-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 28px 0;
+  text-align: left;
+}
+
+.obrigado-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--cream);
+  border-radius: var(--r);
+  border: 1px solid var(--border);
+}
+
+.step-num-badge {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+
+.step-text strong {
+  font-size: 0.88rem;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.step-text span { font-size: 0.8rem; color: var(--ink-muted); }
+
+.obrigado-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0 0 28px;
+}
+
+.wa-hint {
+  margin-top: 18px;
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.wa-hint a {
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wa-hint a:hover { text-decoration: underline; }
+
+@media (min-width: 768px) {
+  .thank-card { padding: 56px 48px; }
+}
+</style>

@@ -1,0 +1,66 @@
+---
+import Especialidade from '../layouts/Especialidade.astro';
+---
+
+<Especialidade
+  title="Lentes de Contato Dental em Maringá | Facetas Ultrafinas"
+  description="Lentes de Contato Dental em Maringá. Facetas ultrafinas de porcelana com mínimo desgaste. Transforme seu sorriso. Agende sua avaliação."
+  badge="Lentes de Contato Dental · Maringá PR"
+  h1="Lentes de Contato Dental"
+  h1Em="Maringá"
+  descricao="Facetas ultrafinas de porcelana que transformam o sorriso com mínimo ou nenhum desgaste dental. Resultado natural, duradouro e de alta estética."
+  procedimento="Lentes de Contato Dental"
+  formName="lentes"
+  mensagemWa="lentes"
+>
+
+  <section class="content-section">
+    <div class="section-inner">
+      <div class="content-grid">
+        <div class="reveal">
+          <span class="section-label">O que são lentes de contato dental</span>
+          <h2>Transformação sem abrir mão da naturalidade</h2>
+          <p>As lentes de contato dental são lâminas de porcelana com espessura mínima — algumas de apenas 0,3 mm — que são coladas na face frontal dos dentes. O resultado é um sorriso completamente transformado com o mínimo de intervenção.</p>
+          <p>Ao contrário das facetas tradicionais, as lentes de contato dental frequentemente não exigem desgaste do dente, preservando ao máximo a estrutura dental natural.</p>
+          <ul class="feature-list">
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Mínimo ou nenhum desgaste dental</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Porcelana de alta translucidez e resistência</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Corrige cor, forma, tamanho e posição</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Durabilidade de 10 a 20 anos com cuidados adequados</li>
+            <li><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>Aparência completamente natural</li>
+          </ul>
+        </div>
+        <div class="reveal">
+          <div class="info-card">
+            <h3>Atendemos em toda Maringá</h3>
+            <p>Clínicas parceiras nas principais regiões da cidade</p>
+            <div class="locations-grid">
+              {['Zona 01 / Centro','Zona 07','Mandacaru','Vila Operária','Jardim Alvorada','Novo Centro'].map(l => (
+                <div class="location-tag">
+                  <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                  {l}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-bg">
+    <div class="section-inner">
+      <div class="section-header reveal" style="text-align:center; max-width:600px; margin: 0 auto 48px;">
+        <span class="section-label">Passo a passo</span>
+        <h2>Como é feito o tratamento?</h2>
+      </div>
+      <div class="steps-grid reveal">
+        <div class="step"><div class="step-num">01</div><h3>Planejamento digital</h3><p>Simulação do resultado final com fotos e software antes de iniciar qualquer procedimento.</p></div>
+        <div class="step"><div class="step-num">02</div><h3>Preparo mínimo</h3><p>Quando necessário, desgaste mínimo do esmalte para receber a lente com precisão.</p></div>
+        <div class="step"><div class="step-num">03</div><h3>Confecção em laboratório</h3><p>Lentes fabricadas em porcelana de alta qualidade com base no planejamento digital.</p></div>
+        <div class="step"><div class="step-num">04</div><h3>Cimentação definitiva</h3><p>Colagem das lentes com cimento resinoso especial e ajuste final da oclusão.</p></div>
+      </div>
+    </div>
+  </section>
+
+</Especialidade>
