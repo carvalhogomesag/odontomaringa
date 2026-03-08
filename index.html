@@ -1,1282 +1,1282 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OdontoMaringá — Especialistas em Odontologia em Maringá, PR</title>
-    <meta name="description" content="Encontre o melhor dentista em Maringá para implantes, clareamento, harmonização e ortodontia. Avaliação gratuita com especialistas próximos a você.">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --ink: #0d1b2a;
-            --ink-soft: #3a4a5c;
-            --ink-muted: #7a8a9a;
-            --cream: #f9f5ef;
-            --white: #ffffff;
-            --gold: #c9a84c;
-            --gold-light: #f0e4c4;
-            --teal: #0a7c6e;
-            --teal-light: #e0f2ef;
-            --accent: #d94f3d;
-            --border: rgba(13,27,42,0.08);
-            --shadow-sm: 0 2px 12px rgba(13,27,42,0.07);
-            --shadow-md: 0 8px 40px rgba(13,27,42,0.12);
-            --shadow-lg: 0 24px 80px rgba(13,27,42,0.18);
-            --r: 16px;
-            --r-lg: 28px;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--white);
-            color: var(--ink);
-            font-size: 16px;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'DM Serif Display', serif;
-            line-height: 1.15;
-            letter-spacing: -0.02em;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid var(--border);
-            padding: 0 max(24px, 5vw);
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            height: 68px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-        }
-
-        .logo-mark {
-            width: 36px; height: 36px;
-            background: var(--ink);
-            border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-        }
-
-        .logo-mark svg { width: 20px; height: 20px; fill: var(--gold); }
-
-        .logo-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.2rem;
-            color: var(--ink);
-            letter-spacing: -0.02em;
-        }
-
-        .logo-text span { color: var(--teal); }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--ink-soft);
-            text-decoration: none;
-            letter-spacing: 0.01em;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover { color: var(--ink); }
-
-        .btn-nav {
-            background: var(--ink);
-            color: var(--white) !important;
-            padding: 10px 22px;
-            border-radius: 50px;
-            font-size: 0.875rem !important;
-            font-weight: 600 !important;
-            transition: background 0.2s, transform 0.2s !important;
-        }
-
-        .btn-nav:hover { background: var(--teal) !important; transform: translateY(-1px); }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-        }
-
-        /* ── HERO ── */
-        .hero {
-            min-height: 100svh;
-            padding: 120px max(24px, 5vw) 80px;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            background: var(--cream);
-        }
-
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-        }
-
-        /* subtle grain texture */
-        .hero-bg::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        /* large decorative circle */
-        .hero-bg::after {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(10,124,110,0.08) 0%, transparent 70%);
-        }
-
-        .hero-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 420px;
-            gap: 64px;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--teal-light);
-            color: var(--teal);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: 50px;
-            margin-bottom: 24px;
-            border: 1px solid rgba(10,124,110,0.15);
-        }
-
-        .hero-badge svg { width: 14px; height: 14px; fill: var(--teal); }
-
-        .hero h1 {
-            font-size: clamp(2.8rem, 5.5vw, 4.2rem);
-            color: var(--ink);
-            margin-bottom: 24px;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--teal);
-        }
-
-        .hero-desc {
-            font-size: 1.15rem;
-            color: var(--ink-soft);
-            max-width: 500px;
-            margin-bottom: 40px;
-            line-height: 1.7;
-        }
-
-        .hero-ctas {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
-            margin-bottom: 56px;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--teal);
-            color: var(--white);
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
-            box-shadow: 0 4px 24px rgba(10,124,110,0.3);
-        }
-
-        .btn-primary:hover {
-            background: #085e53;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(10,124,110,0.4);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: transparent;
-            color: var(--ink);
-            padding: 15px 28px;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            border: 1.5px solid var(--border);
-            transition: border-color 0.2s, background 0.2s;
-        }
-
-        .btn-secondary:hover {
-            background: var(--white);
-            border-color: var(--ink-muted);
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-        }
-
-        .stat-item { }
-
-        .stat-number {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            color: var(--ink);
-            display: block;
-            letter-spacing: -0.03em;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--ink-muted);
-            font-weight: 500;
-        }
-
-        /* Hero form card */
-        .hero-card {
-            background: var(--white);
-            border-radius: var(--r-lg);
-            box-shadow: var(--shadow-lg);
-            overflow: hidden;
-            border: 1px solid var(--border);
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
-        }
-
-        .card-header {
-            background: var(--ink);
-            padding: 28px 32px;
-            color: var(--white);
-        }
-
-        .card-header-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 6px;
-        }
-
-        .card-header h3 {
-            font-size: 1.4rem;
-            color: var(--white);
-        }
-
-        .card-header p {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.55);
-            margin-top: 4px;
-        }
-
-        .card-body {
-            padding: 32px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--ink-soft);
-            margin-bottom: 6px;
-            letter-spacing: 0.01em;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 13px 16px;
-            border: 1.5px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-family: 'DM Sans', sans-serif;
-            color: var(--ink);
-            background: var(--cream);
-            transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-            outline: none;
-            -webkit-appearance: none;
-        }
-
-        .form-control:focus {
-            border-color: var(--teal);
-            background: var(--white);
-            box-shadow: 0 0 0 3px rgba(10,124,110,0.1);
-        }
-
-        select.form-control { cursor: pointer; }
-
-        .btn-form {
-            width: 100%;
-            background: var(--teal);
-            color: var(--white);
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 700;
-            font-family: 'DM Sans', sans-serif;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-            margin-top: 4px;
-            letter-spacing: 0.01em;
-        }
-
-        .btn-form:hover {
-            background: #085e53;
-            transform: translateY(-1px);
-        }
-
-        .form-trust {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-top: 14px;
-            font-size: 0.75rem;
-            color: var(--ink-muted);
-        }
-
-        .form-trust svg { width: 13px; height: 13px; opacity: 0.6; }
-
-        /* ── SOCIAL PROOF BAR ── */
-        .proof-bar {
-            background: var(--ink);
-            padding: 20px max(24px, 5vw);
-        }
-
-        .proof-bar-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 48px;
-            flex-wrap: wrap;
-        }
-
-        .proof-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.875rem;
-            font-weight: 500;
-        }
-
-        .proof-item svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
-
-        .proof-divider {
-            width: 1px;
-            height: 20px;
-            background: rgba(255,255,255,0.15);
-        }
-
-        /* ── SPECIALTIES ── */
-        .section-label {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--teal);
-            margin-bottom: 12px;
-        }
-
-        section { padding: 100px max(24px, 5vw); }
-
-        .section-inner { max-width: 1200px; margin: 0 auto; }
-
-        .section-header { margin-bottom: 60px; }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            color: var(--ink);
-            margin-bottom: 16px;
-        }
-
-        .section-header p {
-            font-size: 1.05rem;
-            color: var(--ink-soft);
-            max-width: 560px;
-            line-height: 1.7;
-        }
-
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 24px;
-        }
-
-        .specialty-card {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: 36px 32px;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .specialty-card::before {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            height: 3px;
-            width: 0;
-            background: var(--teal);
-            transition: width 0.4s ease;
-        }
-
-        .specialty-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-md);
-            border-color: rgba(10,124,110,0.2);
-        }
-
-        .specialty-card:hover::before { width: 100%; }
-
-        .specialty-icon {
-            width: 52px; height: 52px;
-            border-radius: 14px;
-            background: var(--teal-light);
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .specialty-icon svg { width: 24px; height: 24px; fill: var(--teal); }
-
-        .specialty-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: var(--ink);
-        }
-
-        .specialty-card p {
-            font-size: 0.9rem;
-            color: var(--ink-muted);
-            line-height: 1.65;
-        }
-
-        .specialty-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 18px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--teal);
-            text-decoration: none;
-        }
-
-        .specialty-link svg { width: 14px; height: 14px; fill: var(--teal); transition: transform 0.2s; }
-        .specialty-card:hover .specialty-link svg { transform: translateX(3px); }
-
-        /* ── HOW IT WORKS ── */
-        .how-section { background: var(--cream); }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 4px;
-            position: relative;
-        }
-
-        .step {
-            background: var(--white);
-            padding: 40px 32px;
-            border-radius: var(--r);
-            text-align: center;
-            position: relative;
-        }
-
-        .step-num {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3.5rem;
-            color: var(--teal-light);
-            line-height: 1;
-            margin-bottom: 16px;
-        }
-
-        .step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--ink);
-        }
-
-        .step p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6; }
-
-        /* ── TESTIMONIALS ── */
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        .testimonial {
-            background: var(--white);
-            border: 1px solid var(--border);
-            border-radius: var(--r-lg);
-            padding: 36px 32px;
-        }
-
-        .stars {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 18px;
-        }
-
-        .stars svg { width: 16px; height: 16px; fill: var(--gold); }
-
-        .testimonial blockquote {
-            font-size: 1rem;
-            color: var(--ink-soft);
-            line-height: 1.7;
-            margin-bottom: 24px;
-            font-style: italic;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-avatar {
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            background: var(--teal-light);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem;
-            color: var(--teal);
-            flex-shrink: 0;
-        }
-
-        .author-name {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--ink);
-        }
-
-        .author-detail {
-            font-size: 0.8rem;
-            color: var(--ink-muted);
-        }
-
-        /* ── CTA BAND ── */
-        .cta-band {
-            background: var(--ink);
-            padding: 100px max(24px, 5vw);
-        }
-
-        .cta-band-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 480px;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .cta-band h2 {
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
-            color: var(--white);
-            margin-bottom: 20px;
-        }
-
-        .cta-band h2 em {
-            color: var(--gold);
-            font-style: italic;
-        }
-
-        .cta-band p {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.6);
-            line-height: 1.7;
-            margin-bottom: 36px;
-        }
-
-        .trust-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .trust-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.75);
-        }
-
-        .trust-list li svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
-
-        /* form in dark band */
-        .dark-form {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: var(--r-lg);
-            padding: 40px;
-        }
-
-        .dark-form .form-control {
-            background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.15);
-            color: var(--white);
-        }
-
-        .dark-form .form-control::placeholder { color: rgba(255,255,255,0.35); }
-
-        .dark-form .form-control:focus {
-            background: rgba(255,255,255,0.12);
-            border-color: var(--gold);
-            box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
-        }
-
-        .dark-form label { color: rgba(255,255,255,0.6); }
-
-        .dark-form .btn-form {
-            background: var(--gold);
-            color: var(--ink);
-        }
-
-        .dark-form .btn-form:hover { background: #b8943d; }
-
-        .dark-form .form-trust { color: rgba(255,255,255,0.35); }
-
-        .dark-form-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            color: var(--white);
-            margin-bottom: 4px;
-        }
-
-        .dark-form-sub {
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.45);
-            margin-bottom: 28px;
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--cream);
-            padding: 60px max(24px, 5vw) 40px;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 40px;
-            align-items: start;
-        }
-
-        .footer-brand p {
-            margin-top: 12px;
-            font-size: 0.875rem;
-            color: var(--ink-muted);
-            max-width: 320px;
-            line-height: 1.6;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            font-size: 0.875rem;
-            color: var(--ink-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover { color: var(--teal); }
-
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 32px auto 0;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-            font-size: 0.78rem;
-            color: var(--ink-muted);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 8px;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .hero-inner { grid-template-columns: 1fr; }
-            .hero-card { max-width: 480px; }
-            .hero { align-items: flex-start; }
-            .cta-band-inner { grid-template-columns: 1fr; }
-            .footer-inner { grid-template-columns: 1fr; }
-            .footer-links { flex-direction: column; gap: 12px; }
-        }
-
-        @media (max-width: 640px) {
-            section { padding: 72px 20px; }
-            .hero { padding: 100px 20px 60px; }
-            .hero h1 { font-size: 2.4rem; }
-            .hero-stats { gap: 28px; }
-            .proof-bar-inner { gap: 20px; }
-            .proof-divider { display: none; }
-            .dark-form { padding: 28px 24px; }
-        }
-
-        /* ── ANIMATIONS ── */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-content > * {
-            animation: slideUp 0.7s ease both;
-        }
-
-        .hero .hero-badge { animation-delay: 0.1s; }
-        .hero h1 { animation-delay: 0.2s; }
-        .hero .hero-desc { animation-delay: 0.3s; }
-        .hero .hero-ctas { animation-delay: 0.4s; }
-        .hero .hero-stats { animation-delay: 0.5s; }
-
-        /* ── WHATSAPP FLOAT ── */
-        .wa-float {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 200;
-            background: #25d366;
-            width: 58px; height: 58px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 8px 28px rgba(37,211,102,0.45);
-            text-decoration: none;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
-
-        .wa-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 12px 36px rgba(37,211,102,0.55);
-        }
-
-        .wa-float svg { width: 28px; height: 28px; fill: white; }
-
-        /* Scroll fade-in for sections */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease, transform 0.7s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>OdontoMaringá — Especialistas em Odontologia em Maringá, PR</title>
+ <meta name="description" content="Encontre o melhor dentista em Maringá para implantes, clareamento, harmonização e ortodontia. Avaliação com especialistas próximos a você.">
+
+ <!-- Fonts -->
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+ <style>
+ *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+ :root {
+ --ink: #0d1b2a;
+ --ink-soft: #3a4a5c;
+ --ink-muted: #7a8a9a;
+ --cream: #f9f5ef;
+ --white: #ffffff;
+ --gold: #c9a84c;
+ --gold-light: #f0e4c4;
+ --teal: #0a7c6e;
+ --teal-light: #e0f2ef;
+ --accent: #d94f3d;
+ --border: rgba(13,27,42,0.08);
+ --shadow-sm: 0 2px 12px rgba(13,27,42,0.07);
+ --shadow-md: 0 8px 40px rgba(13,27,42,0.12);
+ --shadow-lg: 0 24px 80px rgba(13,27,42,0.18);
+ --r: 16px;
+ --r-lg: 28px;
+ }
+
+ html { scroll-behavior: smooth; }
+
+ body {
+ font-family: 'DM Sans', sans-serif;
+ background: var(--white);
+ color: var(--ink);
+ font-size: 16px;
+ line-height: 1.6;
+ -webkit-font-smoothing: antialiased;
+ overflow-x: hidden;
+ }
+
+ h1, h2, h3, h4 {
+ font-family: 'DM Serif Display', serif;
+ line-height: 1.15;
+ letter-spacing: -0.02em;
+ }
+
+ /* ── NAV ── */
+ nav {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ z-index: 100;
+ background: rgba(255,255,255,0.92);
+ backdrop-filter: blur(16px);
+ -webkit-backdrop-filter: blur(16px);
+ border-bottom: 1px solid var(--border);
+ padding: 0 max(24px, 5vw);
+ }
+
+ .nav-inner {
+ max-width: 1200px;
+ margin: 0 auto;
+ height: 68px;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 24px;
+ }
+
+ .logo {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ text-decoration: none;
+ }
+
+ .logo-mark {
+ width: 36px; height: 36px;
+ background: var(--ink);
+ border-radius: 10px;
+ display: flex; align-items: center; justify-content: center;
+ }
+
+ .logo-mark svg { width: 20px; height: 20px; fill: var(--gold); }
+
+ .logo-text {
+ font-family: 'DM Serif Display', serif;
+ font-size: 1.2rem;
+ color: var(--ink);
+ letter-spacing: -0.02em;
+ }
+
+ .logo-text span { color: var(--teal); }
+
+ .nav-links {
+ display: flex;
+ align-items: center;
+ gap: 32px;
+ list-style: none;
+ }
+
+ .nav-links a {
+ font-size: 0.875rem;
+ font-weight: 500;
+ color: var(--ink-soft);
+ text-decoration: none;
+ letter-spacing: 0.01em;
+ transition: color 0.2s;
+ }
+
+ .nav-links a:hover { color: var(--ink); }
+
+ .btn-nav {
+ background: var(--ink);
+ color: var(--white) !important;
+ padding: 10px 22px;
+ border-radius: 50px;
+ font-size: 0.875rem !important;
+ font-weight: 600 !important;
+ transition: background 0.2s, transform 0.2s !important;
+ }
+
+ .btn-nav:hover { background: var(--teal) !important; transform: translateY(-1px); }
+
+ @media (max-width: 768px) {
+ .nav-links { display: none; }
+ }
+
+ /* ── HERO ── */
+ .hero {
+ min-height: 100svh;
+ padding: 120px max(24px, 5vw) 80px;
+ display: flex;
+ align-items: center;
+ position: relative;
+ overflow: hidden;
+ background: var(--cream);
+ }
+
+ .hero-bg {
+ position: absolute;
+ inset: 0;
+ z-index: 0;
+ }
+
+ /* subtle grain texture */
+ .hero-bg::before {
+ content: '';
+ position: absolute;
+ inset: 0;
+ background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+ opacity: 0.5;
+ }
+
+ /* large decorative circle */
+ .hero-bg::after {
+ content: '';
+ position: absolute;
+ top: -200px;
+ right: -200px;
+ width: 700px;
+ height: 700px;
+ border-radius: 50%;
+ background: radial-gradient(circle, rgba(10,124,110,0.08) 0%, transparent 70%);
+ }
+
+ .hero-inner {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: 1fr 420px;
+ gap: 64px;
+ align-items: center;
+ position: relative;
+ z-index: 1;
+ }
+
+ .hero-badge {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: var(--teal-light);
+ color: var(--teal);
+ font-size: 0.75rem;
+ font-weight: 600;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
+ padding: 6px 14px;
+ border-radius: 50px;
+ margin-bottom: 24px;
+ border: 1px solid rgba(10,124,110,0.15);
+ }
+
+ .hero-badge svg { width: 14px; height: 14px; fill: var(--teal); }
+
+ .hero h1 {
+ font-size: clamp(2.8rem, 5.5vw, 4.2rem);
+ color: var(--ink);
+ margin-bottom: 24px;
+ }
+
+ .hero h1 em {
+ font-style: italic;
+ color: var(--teal);
+ }
+
+ .hero-desc {
+ font-size: 1.15rem;
+ color: var(--ink-soft);
+ max-width: 500px;
+ margin-bottom: 40px;
+ line-height: 1.7;
+ }
+
+ .hero-ctas {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 14px;
+ margin-bottom: 56px;
+ }
+
+ .btn-primary {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: var(--teal);
+ color: var(--white);
+ padding: 15px 30px;
+ border-radius: 50px;
+ font-size: 1rem;
+ font-weight: 600;
+ text-decoration: none;
+ transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+ box-shadow: 0 4px 24px rgba(10,124,110,0.3);
+ }
+
+ .btn-primary:hover {
+ background: #085e53;
+ transform: translateY(-2px);
+ box-shadow: 0 8px 32px rgba(10,124,110,0.4);
+ }
+
+ .btn-secondary {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ background: transparent;
+ color: var(--ink);
+ padding: 15px 28px;
+ border-radius: 50px;
+ font-size: 1rem;
+ font-weight: 500;
+ text-decoration: none;
+ border: 1.5px solid var(--border);
+ transition: border-color 0.2s, background 0.2s;
+ }
+
+ .btn-secondary:hover {
+ background: var(--white);
+ border-color: var(--ink-muted);
+ }
+
+ .hero-stats {
+ display: flex;
+ gap: 40px;
+ }
+
+ .stat-item { }
+
+ .stat-number {
+ font-family: 'DM Serif Display', serif;
+ font-size: 2rem;
+ color: var(--ink);
+ display: block;
+ letter-spacing: -0.03em;
+ }
+
+ .stat-label {
+ font-size: 0.8rem;
+ color: var(--ink-muted);
+ font-weight: 500;
+ }
+
+ /* Hero form card */
+ .hero-card {
+ background: var(--white);
+ border-radius: var(--r-lg);
+ box-shadow: var(--shadow-lg);
+ overflow: hidden;
+ border: 1px solid var(--border);
+ animation: float 6s ease-in-out infinite;
+ }
+
+ @keyframes float {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-8px); }
+ }
+
+ .card-header {
+ background: var(--ink);
+ padding: 28px 32px;
+ color: var(--white);
+ }
+
+ .card-header-label {
+ font-size: 0.7rem;
+ font-weight: 600;
+ letter-spacing: 0.1em;
+ text-transform: uppercase;
+ color: var(--gold);
+ margin-bottom: 6px;
+ }
+
+ .card-header h3 {
+ font-size: 1.4rem;
+ color: var(--white);
+ }
+
+ .card-header p {
+ font-size: 0.85rem;
+ color: rgba(255,255,255,0.55);
+ margin-top: 4px;
+ }
+
+ .card-body {
+ padding: 32px;
+ }
+
+ .form-group {
+ margin-bottom: 16px;
+ }
+
+ .form-group label {
+ display: block;
+ font-size: 0.8rem;
+ font-weight: 600;
+ color: var(--ink-soft);
+ margin-bottom: 6px;
+ letter-spacing: 0.01em;
+ }
+
+ .form-control {
+ width: 100%;
+ padding: 13px 16px;
+ border: 1.5px solid var(--border);
+ border-radius: 12px;
+ font-size: 0.95rem;
+ font-family: 'DM Sans', sans-serif;
+ color: var(--ink);
+ background: var(--cream);
+ transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+ outline: none;
+ -webkit-appearance: none;
+ }
+
+ .form-control:focus {
+ border-color: var(--teal);
+ background: var(--white);
+ box-shadow: 0 0 0 3px rgba(10,124,110,0.1);
+ }
+
+ select.form-control { cursor: pointer; }
+
+ .btn-form {
+ width: 100%;
+ background: var(--teal);
+ color: var(--white);
+ border: none;
+ padding: 16px;
+ border-radius: 12px;
+ font-size: 1rem;
+ font-weight: 700;
+ font-family: 'DM Sans', sans-serif;
+ cursor: pointer;
+ transition: background 0.2s, transform 0.2s;
+ margin-top: 4px;
+ letter-spacing: 0.01em;
+ }
+
+ .btn-form:hover {
+ background: #085e53;
+ transform: translateY(-1px);
+ }
+
+ .form-trust {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 6px;
+ margin-top: 14px;
+ font-size: 0.75rem;
+ color: var(--ink-muted);
+ }
+
+ .form-trust svg { width: 13px; height: 13px; opacity: 0.6; }
+
+ /* ── SOCIAL PROOF BAR ── */
+ .proof-bar {
+ background: var(--ink);
+ padding: 20px max(24px, 5vw);
+ }
+
+ .proof-bar-inner {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 48px;
+ flex-wrap: wrap;
+ }
+
+ .proof-item {
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ color: rgba(255,255,255,0.7);
+ font-size: 0.875rem;
+ font-weight: 500;
+ }
+
+ .proof-item svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
+
+ .proof-divider {
+ width: 1px;
+ height: 20px;
+ background: rgba(255,255,255,0.15);
+ }
+
+ /* ── SPECIALTIES ── */
+ .section-label {
+ display: inline-block;
+ font-size: 0.7rem;
+ font-weight: 700;
+ letter-spacing: 0.12em;
+ text-transform: uppercase;
+ color: var(--teal);
+ margin-bottom: 12px;
+ }
+
+ section { padding: 100px max(24px, 5vw); }
+
+ .section-inner { max-width: 1200px; margin: 0 auto; }
+
+ .section-header { margin-bottom: 60px; }
+
+ .section-header h2 {
+ font-size: clamp(2rem, 3.5vw, 2.8rem);
+ color: var(--ink);
+ margin-bottom: 16px;
+ }
+
+ .section-header p {
+ font-size: 1.05rem;
+ color: var(--ink-soft);
+ max-width: 560px;
+ line-height: 1.7;
+ }
+
+ .specialties-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+ gap: 24px;
+ }
+
+ .specialty-card {
+ background: var(--white);
+ border: 1px solid var(--border);
+ border-radius: var(--r-lg);
+ padding: 36px 32px;
+ transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+ text-decoration: none;
+ color: inherit;
+ display: block;
+ position: relative;
+ overflow: hidden;
+ }
+
+ .specialty-card::before {
+ content: '';
+ position: absolute;
+ bottom: 0; left: 0;
+ height: 3px;
+ width: 0;
+ background: var(--teal);
+ transition: width 0.4s ease;
+ }
+
+ .specialty-card:hover {
+ transform: translateY(-4px);
+ box-shadow: var(--shadow-md);
+ border-color: rgba(10,124,110,0.2);
+ }
+
+ .specialty-card:hover::before { width: 100%; }
+
+ .specialty-icon {
+ width: 52px; height: 52px;
+ border-radius: 14px;
+ background: var(--teal-light);
+ display: flex; align-items: center; justify-content: center;
+ margin-bottom: 20px;
+ }
+
+ .specialty-icon svg { width: 24px; height: 24px; fill: var(--teal); }
+
+ .specialty-card h3 {
+ font-size: 1.2rem;
+ margin-bottom: 10px;
+ color: var(--ink);
+ }
+
+ .specialty-card p {
+ font-size: 0.9rem;
+ color: var(--ink-muted);
+ line-height: 1.65;
+ }
+
+ .specialty-link {
+ display: inline-flex;
+ align-items: center;
+ gap: 6px;
+ margin-top: 18px;
+ font-size: 0.85rem;
+ font-weight: 600;
+ color: var(--teal);
+ text-decoration: none;
+ }
+
+ .specialty-link svg { width: 14px; height: 14px; fill: var(--teal); transition: transform 0.2s; }
+ .specialty-card:hover .specialty-link svg { transform: translateX(3px); }
+
+ /* ── HOW IT WORKS ── */
+ .how-section { background: var(--cream); }
+
+ .steps-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+ gap: 4px;
+ position: relative;
+ }
+
+ .step {
+ background: var(--white);
+ padding: 40px 32px;
+ border-radius: var(--r);
+ text-align: center;
+ position: relative;
+ }
+
+ .step-num {
+ font-family: 'DM Serif Display', serif;
+ font-size: 3.5rem;
+ color: var(--teal-light);
+ line-height: 1;
+ margin-bottom: 16px;
+ }
+
+ .step h3 {
+ font-size: 1.1rem;
+ margin-bottom: 10px;
+ color: var(--ink);
+ }
+
+ .step p { font-size: 0.9rem; color: var(--ink-muted); line-height: 1.6; }
+
+ /* ── TESTIMONIALS ── */
+ .testimonials-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+ gap: 24px;
+ }
+
+ .testimonial {
+ background: var(--white);
+ border: 1px solid var(--border);
+ border-radius: var(--r-lg);
+ padding: 36px 32px;
+ }
+
+ .stars {
+ display: flex;
+ gap: 4px;
+ margin-bottom: 18px;
+ }
+
+ .stars svg { width: 16px; height: 16px; fill: var(--gold); }
+
+ .testimonial blockquote {
+ font-size: 1rem;
+ color: var(--ink-soft);
+ line-height: 1.7;
+ margin-bottom: 24px;
+ font-style: italic;
+ }
+
+ .testimonial-author {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ }
+
+ .author-avatar {
+ width: 44px; height: 44px;
+ border-radius: 50%;
+ background: var(--teal-light);
+ display: flex; align-items: center; justify-content: center;
+ font-family: 'DM Serif Display', serif;
+ font-size: 1.1rem;
+ color: var(--teal);
+ flex-shrink: 0;
+ }
+
+ .author-name {
+ font-weight: 600;
+ font-size: 0.9rem;
+ color: var(--ink);
+ }
+
+ .author-detail {
+ font-size: 0.8rem;
+ color: var(--ink-muted);
+ }
+
+ /* ── CTA BAND ── */
+ .cta-band {
+ background: var(--ink);
+ padding: 100px max(24px, 5vw);
+ }
+
+ .cta-band-inner {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: 1fr 480px;
+ gap: 80px;
+ align-items: center;
+ }
+
+ .cta-band h2 {
+ font-size: clamp(2rem, 3.5vw, 2.8rem);
+ color: var(--white);
+ margin-bottom: 20px;
+ }
+
+ .cta-band h2 em {
+ color: var(--gold);
+ font-style: italic;
+ }
+
+ .cta-band p {
+ font-size: 1.05rem;
+ color: rgba(255,255,255,0.6);
+ line-height: 1.7;
+ margin-bottom: 36px;
+ }
+
+ .trust-list {
+ list-style: none;
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+ }
+
+ .trust-list li {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ font-size: 0.95rem;
+ color: rgba(255,255,255,0.75);
+ }
+
+ .trust-list li svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; }
+
+ /* form in dark band */
+ .dark-form {
+ background: rgba(255,255,255,0.05);
+ border: 1px solid rgba(255,255,255,0.1);
+ border-radius: var(--r-lg);
+ padding: 40px;
+ }
+
+ .dark-form .form-control {
+ background: rgba(255,255,255,0.08);
+ border-color: rgba(255,255,255,0.15);
+ color: var(--white);
+ }
+
+ .dark-form .form-control::placeholder { color: rgba(255,255,255,0.35); }
+
+ .dark-form .form-control:focus {
+ background: rgba(255,255,255,0.12);
+ border-color: var(--gold);
+ box-shadow: 0 0 0 3px rgba(201,168,76,0.15);
+ }
+
+ .dark-form label { color: rgba(255,255,255,0.6); }
+
+ .dark-form .btn-form {
+ background: var(--gold);
+ color: var(--ink);
+ }
+
+ .dark-form .btn-form:hover { background: #b8943d; }
+
+ .dark-form .form-trust { color: rgba(255,255,255,0.35); }
+
+ .dark-form-title {
+ font-family: 'DM Serif Display', serif;
+ font-size: 1.3rem;
+ color: var(--white);
+ margin-bottom: 4px;
+ }
+
+ .dark-form-sub {
+ font-size: 0.85rem;
+ color: rgba(255,255,255,0.45);
+ margin-bottom: 28px;
+ }
+
+ /* ── FOOTER ── */
+ footer {
+ background: var(--cream);
+ padding: 60px max(24px, 5vw) 40px;
+ border-top: 1px solid var(--border);
+ }
+
+ .footer-inner {
+ max-width: 1200px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: 1fr auto;
+ gap: 40px;
+ align-items: start;
+ }
+
+ .footer-brand p {
+ margin-top: 12px;
+ font-size: 0.875rem;
+ color: var(--ink-muted);
+ max-width: 320px;
+ line-height: 1.6;
+ }
+
+ .footer-links {
+ display: flex;
+ gap: 24px;
+ flex-wrap: wrap;
+ }
+
+ .footer-links a {
+ font-size: 0.875rem;
+ color: var(--ink-muted);
+ text-decoration: none;
+ transition: color 0.2s;
+ }
+
+ .footer-links a:hover { color: var(--teal); }
+
+ .footer-bottom {
+ max-width: 1200px;
+ margin: 32px auto 0;
+ padding-top: 24px;
+ border-top: 1px solid var(--border);
+ font-size: 0.78rem;
+ color: var(--ink-muted);
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ flex-wrap: wrap;
+ gap: 8px;
+ }
+
+ /* ── RESPONSIVE ── */
+ @media (max-width: 1024px) {
+ .hero-inner { grid-template-columns: 1fr; }
+ .hero-card { max-width: 480px; }
+ .hero { align-items: flex-start; }
+ .cta-band-inner { grid-template-columns: 1fr; }
+ .footer-inner { grid-template-columns: 1fr; }
+ .footer-links { flex-direction: column; gap: 12px; }
+ }
+
+ @media (max-width: 640px) {
+ section { padding: 72px 20px; }
+ .hero { padding: 100px 20px 60px; }
+ .hero h1 { font-size: 2.4rem; }
+ .hero-stats { gap: 28px; }
+ .proof-bar-inner { gap: 20px; }
+ .proof-divider { display: none; }
+ .dark-form { padding: 28px 24px; }
+ }
+
+ /* ── ANIMATIONS ── */
+ @keyframes slideUp {
+ from { opacity: 0; transform: translateY(24px); }
+ to { opacity: 1; transform: translateY(0); }
+ }
+
+ .hero-content > * {
+ animation: slideUp 0.7s ease both;
+ }
+
+ .hero .hero-badge { animation-delay: 0.1s; }
+ .hero h1 { animation-delay: 0.2s; }
+ .hero .hero-desc { animation-delay: 0.3s; }
+ .hero .hero-ctas { animation-delay: 0.4s; }
+ .hero .hero-stats { animation-delay: 0.5s; }
+
+ /* ── WHATSAPP FLOAT ── */
+ .wa-float {
+ position: fixed;
+ bottom: 28px;
+ right: 28px;
+ z-index: 200;
+ background: #25d366;
+ width: 58px; height: 58px;
+ border-radius: 50%;
+ display: flex; align-items: center; justify-content: center;
+ box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+ text-decoration: none;
+ transition: transform 0.25s, box-shadow 0.25s;
+ }
+
+ .wa-float:hover {
+ transform: scale(1.08);
+ box-shadow: 0 12px 36px rgba(37,211,102,0.55);
+ }
+
+ .wa-float svg { width: 28px; height: 28px; fill: white; }
+
+ /* Scroll fade-in for sections */
+ .reveal {
+ opacity: 0;
+ transform: translateY(30px);
+ transition: opacity 0.7s ease, transform 0.7s ease;
+ }
+ .reveal.visible {
+ opacity: 1;
+ transform: translateY(0);
+ }
+ </style>
 </head>
 <body>
 
 <!-- ── NAV ── -->
 <nav>
-    <div class="nav-inner">
-        <a class="logo" href="#">
-            <div class="logo-mark">
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/>
-                </svg>
-            </div>
-            <span class="logo-text">Odonto<span>Maringá</span></span>
-        </a>
-        <ul class="nav-links">
-            <li><a href="#especialidades">Especialidades</a></li>
-            <li><a href="#como-funciona">Como Funciona</a></li>
-            <li><a href="#depoimentos">Depoimentos</a></li>
-            <li><a href="#contato" class="btn-nav">Avaliação Gratuita</a></li>
-        </ul>
-    </div>
+ <div class="nav-inner">
+ <a class="logo" href="#">
+ <div class="logo-mark">
+ <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/>
+ </svg>
+ </div>
+ <span class="logo-text">Odonto<span>Maringá</span></span>
+ </a>
+ <ul class="nav-links">
+ <li><a href="#especialidades">Especialidades</a></li>
+ <li><a href="#como-funciona">Como Funciona</a></li>
+ <li><a href="#depoimentos">Depoimentos</a></li>
+ <li><a href="#contato" class="btn-nav">Agendar Avaliação</a></li>
+ </ul>
+ </div>
 </nav>
 
 <!-- ── HERO ── -->
 <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-inner">
-        <div class="hero-content">
-            <span class="hero-badge">
-                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                Odontologia Especializada · Maringá PR
-            </span>
-            <h1>Seu próximo dentista<br>em <em>Maringá</em> está aqui</h1>
-            <p class="hero-desc">Conectamos você ao especialista ideal — implantes, clareamento, ortodontia, harmonização e mais. Avaliação gratuita, sem compromisso.</p>
-            <div class="hero-ctas">
-                <a href="#contato" class="btn-primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V4a2 2 0 012-2zm4 17a1 1 0 100-2 1 1 0 000 2z"/></svg>
-                    Agendar Avaliação Gratuita
-                </a>
-                <a href="#especialidades" class="btn-secondary">Ver Especialidades</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number">+2.400</span>
-                    <span class="stat-label">Pacientes conectados</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">97%</span>
-                    <span class="stat-label">Satisfação comprovada</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">24h</span>
-                    <span class="stat-label">Retorno garantido</span>
-                </div>
-            </div>
-        </div>
+ <div class="hero-bg"></div>
+ <div class="hero-inner">
+ <div class="hero-content">
+ <span class="hero-badge">
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ Odontologia Especializada · Maringá PR
+ </span>
+ <h1>Seu próximo dentista<br>em <em>Maringá</em> está aqui</h1>
+ <p class="hero-desc">Conectamos você ao especialista ideal — implantes, clareamento, ortodontia, harmonização e mais. Avaliação sem compromisso.</p>
+ <div class="hero-ctas">
+ <a href="#contato" class="btn-primary">
+ <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V4a2 2 0 012-2zm4 17a1 1 0 100-2 1 1 0 000 2z"/></svg>
+ Agendar Avaliação
+ </a>
+ <a href="#especialidades" class="btn-secondary">Ver Especialidades</a>
+ </div>
+ <div class="hero-stats">
+ <div class="stat-item">
+ <span class="stat-number">+2.400</span>
+ <span class="stat-label">Pacientes conectados</span>
+ </div>
+ <div class="stat-item">
+ <span class="stat-number">97%</span>
+ <span class="stat-label">Satisfação comprovada</span>
+ </div>
+ <div class="stat-item">
+ <span class="stat-number">24h</span>
+ <span class="stat-label">Retorno garantido</span>
+ </div>
+ </div>
+ </div>
 
-        <!-- Hero Form -->
-        <div class="hero-card">
-            <div class="card-header">
-                <div class="card-header-label">Consulta sem custo</div>
-                <h3>Quero minha avaliação gratuita</h3>
-                <p>Retorno em até 24 horas via WhatsApp</p>
-            </div>
-            <div class="card-body">
-                <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                    <input type="hidden" name="procedimento" value="Geral">
-                    <input type="hidden" name="cidade" value="Maringá">
-                    <input type="text" name="bot-field" style="display:none">
+ <!-- Hero Form -->
+ <div class="hero-card">
+ <div class="card-header">
+ <div class="card-header-label">Fale com um especialista</div>
+ <h3>Quero minha avaliação</h3>
+ <p>Retorno em até 24 horas via WhatsApp</p>
+ </div>
+ <div class="card-body">
+ <form name="captura-leads-dentistas" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+ <input type="hidden" name="procedimento" value="Geral">
+ <input type="hidden" name="cidade" value="Maringá">
+ <input type="text" name="bot-field" style="display:none">
 
-                    <div class="form-group">
-                        <label for="hero-nome">Nome completo</label>
-                        <input type="text" id="hero-nome" name="nome" required placeholder="João da Silva" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="hero-whatsapp">WhatsApp</label>
-                        <input type="tel" id="hero-whatsapp" name="whatsapp" required placeholder="(44) 99999-9999" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="hero-procedimento">O que você precisa?</label>
-                        <select id="hero-procedimento" name="servico" class="form-control">
-                            <option value="">Selecione um tratamento</option>
-                            <option value="implante">Implante Dentário</option>
-                            <option value="clareamento">Clareamento Dental</option>
-                            <option value="ortodontia">Aparelho / Ortodontia</option>
-                            <option value="harmonizacao">Harmonização Orofacial</option>
-                            <option value="canal">Tratamento de Canal</option>
-                            <option value="protese">Prótese Dentária</option>
-                            <option value="geral">Consulta Geral</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn-form">Solicitar Avaliação Gratuita →</button>
-                    <p class="form-trust">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 015 5v3h1a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2h1V7a5 5 0 015-5zm0 12a2 2 0 100 4 2 2 0 000-4zm0-10a3 3 0 00-3 3v3h6V7a3 3 0 00-3-3z"/></svg>
-                        Seus dados estão 100% seguros. Sem spam.
-                    </p>
-                </form>
-            </div>
-        </div>
-    </div>
+ <div class="form-group">
+ <label for="hero-nome">Nome completo</label>
+ <input type="text" id="hero-nome" name="nome" required placeholder="João da Silva" class="form-control">
+ </div>
+ <div class="form-group">
+ <label for="hero-whatsapp">WhatsApp</label>
+ <input type="tel" id="hero-whatsapp" name="whatsapp" required placeholder="(44) 99999-9999" class="form-control">
+ </div>
+ <div class="form-group">
+ <label for="hero-procedimento">O que você precisa?</label>
+ <select id="hero-procedimento" name="servico" class="form-control">
+ <option value="">Selecione um tratamento</option>
+ <option value="implante">Implante Dentário</option>
+ <option value="clareamento">Clareamento Dental</option>
+ <option value="ortodontia">Aparelho / Ortodontia</option>
+ <option value="harmonizacao">Harmonização Orofacial</option>
+ <option value="canal">Tratamento de Canal</option>
+ <option value="protese">Prótese Dentária</option>
+ <option value="geral">Consulta Geral</option>
+ </select>
+ </div>
+ <button type="submit" class="btn-form">Solicitar Avaliação →</button>
+ <p class="form-trust">
+ <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a5 5 0 015 5v3h1a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2h1V7a5 5 0 015-5zm0 12a2 2 0 100 4 2 2 0 000-4zm0-10a3 3 0 00-3 3v3h6V7a3 3 0 00-3-3z"/></svg>
+ Seus dados estão 100% seguros. Sem spam.
+ </p>
+ </form>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ── SOCIAL PROOF BAR ── -->
 <div class="proof-bar">
-    <div class="proof-bar-inner">
-        <div class="proof-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-            Nota 4.9 no Google
-        </div>
-        <div class="proof-divider"></div>
-        <div class="proof-item">
-            <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zm-9 8H6v-2h5v2zm3-4H6V9h8v2zm4 4h-2v-2h2v2z"/></svg>
-            Especialistas com CRO-PR
-        </div>
-        <div class="proof-divider"></div>
-        <div class="proof-item">
-            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Mais de 2.400 pacientes atendidos
-        </div>
-        <div class="proof-divider"></div>
-        <div class="proof-item">
-            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-            Agendamento em menos de 24h
-        </div>
-    </div>
+ <div class="proof-bar-inner">
+ <div class="proof-item">
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ Nota 4.9 no Google
+ </div>
+ <div class="proof-divider"></div>
+ <div class="proof-item">
+ <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2zm-9 8H6v-2h5v2zm3-4H6V9h8v2zm4 4h-2v-2h2v2z"/></svg>
+ Especialistas com CRO-PR
+ </div>
+ <div class="proof-divider"></div>
+ <div class="proof-item">
+ <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ Mais de 2.400 pacientes atendidos
+ </div>
+ <div class="proof-divider"></div>
+ <div class="proof-item">
+ <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+ Agendamento em menos de 24h
+ </div>
+ </div>
 </div>
 
 <!-- ── SPECIALTIES ── -->
 <section id="especialidades">
-    <div class="section-inner">
-        <div class="section-header reveal">
-            <span class="section-label">Tratamentos disponíveis</span>
-            <h2>O especialista certo<br>para o seu sorriso</h2>
-            <p>Conectamos você com dentistas especializados em Maringá para cada tipo de tratamento. Qualidade comprovada, atendimento humano.</p>
-        </div>
-        <div class="specialties-grid">
-            <a class="specialty-card reveal" href="implante-dentario-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
-                </div>
-                <h3>Implante Dentário</h3>
-                <p>Recupere sua mastigação e sorriso com implantes de titânio de última geração. Solução permanente e natural.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="clareamento-dental-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm1 14h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-                </div>
-                <h3>Clareamento Dental</h3>
-                <p>Dentes mais brancos em poucas sessões. Técnica a laser ou caseira com supervisão profissional.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="harmonizacao-orofacial-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 14c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.94 7.94 0 0112 20z"/></svg>
-                </div>
-                <h3>Harmonização Orofacial</h3>
-                <p>Botox, preenchimento, fios de sustentação e bioestimuladores para um rosto mais equilibrado.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="tratamento-de-canal-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4zm0 10c2.67 0 8 1.34 8 4v1H4v-1c0-2.66 5.33-4 8-4z"/></svg>
-                </div>
-                <h3>Tratamento de Canal</h3>
-                <p>Alívio imediato da dor sem perder o dente. Técnicas modernas e minimamente invasivas.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="ortodontista-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
-                </div>
-                <h3>Ortodontia</h3>
-                <p>Aparelho fixo, alinhadores invisíveis e contenção. Sorriso alinhado para todas as idades.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="proteses-dentarias-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                </div>
-                <h3>Prótese &amp; Reabilitação</h3>
-                <p>Coroas, facetas de porcelana e próteses fixas para restaurar função e estética com perfeição.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="lentes-de-contato-dental-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </div>
-                <h3>Lentes de Contato Dental</h3>
-                <p>Facetas ultrafinas que transformam o sorriso com mínimo desgaste. Resultado natural e duradouro.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-            <a class="specialty-card reveal" href="odontologia-estetica-maringa.html">
-                <div class="specialty-icon">
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <h3>Odontologia Estética</h3>
-                <p>Soluções completas para um sorriso bonito e saudável: desde restaurações até transformações totais.</p>
-                <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
-            </a>
-        </div>
-    </div>
+ <div class="section-inner">
+ <div class="section-header reveal">
+ <span class="section-label">Tratamentos disponíveis</span>
+ <h2>O especialista certo<br>para o seu sorriso</h2>
+ <p>Conectamos você com dentistas especializados em Maringá para cada tipo de tratamento. Qualidade comprovada, atendimento humano.</p>
+ </div>
+ <div class="specialties-grid">
+ <a class="specialty-card reveal" href="implante-dentario-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
+ </div>
+ <h3>Implante Dentário</h3>
+ <p>Recupere sua mastigação e sorriso com implantes de titânio de última geração. Solução permanente e natural.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="clareamento-dental-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9zm1 14h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+ </div>
+ <h3>Clareamento Dental</h3>
+ <p>Dentes mais brancos em poucas sessões. Técnica a laser ou caseira com supervisão profissional.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="harmonizacao-orofacial-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 4c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 14c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08A7.94 7.94 0 0112 20z"/></svg>
+ </div>
+ <h3>Harmonização Orofacial</h3>
+ <p>Botox, preenchimento, fios de sustentação e bioestimuladores para um rosto mais equilibrado.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="tratamento-de-canal-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 3a4 4 0 014 4 4 4 0 01-4 4 4 4 0 01-4-4 4 4 0 014-4zm0 10c2.67 0 8 1.34 8 4v1H4v-1c0-2.66 5.33-4 8-4z"/></svg>
+ </div>
+ <h3>Tratamento de Canal</h3>
+ <p>Alívio imediato da dor sem perder o dente. Técnicas modernas e minimamente invasivas.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="ortodontista-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+ </div>
+ <h3>Ortodontia</h3>
+ <p>Aparelho fixo, alinhadores invisíveis e contenção. Sorriso alinhado para todas as idades.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="proteses-dentarias-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ </div>
+ <h3>Prótese &amp; Reabilitação</h3>
+ <p>Coroas, facetas de porcelana e próteses fixas para restaurar função e estética com perfeição.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="lentes-de-contato-dental-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+ </div>
+ <h3>Lentes de Contato Dental</h3>
+ <p>Facetas ultrafinas que transformam o sorriso com mínimo desgaste. Resultado natural e duradouro.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ <a class="specialty-card reveal" href="odontologia-estetica-maringa.html">
+ <div class="specialty-icon">
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ </div>
+ <h3>Odontologia Estética</h3>
+ <p>Soluções completas para um sorriso bonito e saudável: desde restaurações até transformações totais.</p>
+ <span class="specialty-link">Saiba mais <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+ </a>
+ </div>
+ </div>
 </section>
 
 <!-- ── HOW IT WORKS ── -->
 <section class="how-section" id="como-funciona">
-    <div class="section-inner">
-        <div class="section-header reveal" style="text-align:center; max-width: 600px; margin: 0 auto 60px;">
-            <span class="section-label">Processo simples</span>
-            <h2>Como funciona?</h2>
-            <p>Do preenchimento do formulário à sua consulta em menos de 24 horas</p>
-        </div>
-        <div class="steps-grid reveal">
-            <div class="step">
-                <div class="step-num">01</div>
-                <h3>Preencha o formulário</h3>
-                <p>Informe seu nome, WhatsApp e o tratamento que você busca. Leva menos de 60 segundos.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">02</div>
-                <h3>Entramos em contato</h3>
-                <p>Nossa equipe valida seu interesse e te conecta com o especialista mais adequado em Maringá.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">03</div>
-                <h3>Avaliação gratuita</h3>
-                <p>O dentista realiza uma avaliação completa sem custo e apresenta as melhores opções de tratamento.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">04</div>
-                <h3>Cuide do seu sorriso</h3>
-                <p>Inicie seu tratamento com segurança, preço justo e acompanhamento especializado.</p>
-            </div>
-        </div>
-    </div>
+ <div class="section-inner">
+ <div class="section-header reveal" style="text-align:center; max-width: 600px; margin: 0 auto 60px;">
+ <span class="section-label">Processo simples</span>
+ <h2>Como funciona?</h2>
+ <p>Do preenchimento do formulário à sua consulta em menos de 24 horas</p>
+ </div>
+ <div class="steps-grid reveal">
+ <div class="step">
+ <div class="step-num">01</div>
+ <h3>Preencha o formulário</h3>
+ <p>Informe seu nome, WhatsApp e o tratamento que você busca. Leva menos de 60 segundos.</p>
+ </div>
+ <div class="step">
+ <div class="step-num">02</div>
+ <h3>Entramos em contato</h3>
+ <p>Nossa equipe valida seu interesse e te conecta com o especialista mais adequado em Maringá.</p>
+ </div>
+ <div class="step">
+ <div class="step-num">03</div>
+ <h3>Avaliação</h3>
+ <p>O dentista realiza uma avaliação completa e apresenta as melhores opções de tratamento.</p>
+ </div>
+ <div class="step">
+ <div class="step-num">04</div>
+ <h3>Cuide do seu sorriso</h3>
+ <p>Inicie seu tratamento com segurança, preço justo e acompanhamento especializado.</p>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ── TESTIMONIALS ── -->
 <section id="depoimentos">
-    <div class="section-inner">
-        <div class="section-header reveal">
-            <span class="section-label">O que dizem os pacientes</span>
-            <h2>Sorrisos transformados<br>em Maringá</h2>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial reveal">
-                <div class="stars">
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <blockquote>"Fiz meu implante através do OdontoMaringá e foi a melhor experiência que já tive com dentista. O atendimento foi impecável e o resultado é incrível."</blockquote>
-                <div class="testimonial-author">
-                    <div class="author-avatar">C</div>
-                    <div>
-                        <div class="author-name">Carla M.</div>
-                        <div class="author-detail">Implante Dentário · Zona 07</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial reveal">
-                <div class="stars">
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <blockquote>"Em menos de 1 dia me retornaram e já agendei minha avaliação. Fiz o clareamento e estou amando o resultado. Super recomendo para quem está buscando dentista em Maringá."</blockquote>
-                <div class="testimonial-author">
-                    <div class="author-avatar">R</div>
-                    <div>
-                        <div class="author-name">Rafael T.</div>
-                        <div class="author-detail">Clareamento · Mandacaru</div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial reveal">
-                <div class="stars">
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                </div>
-                <blockquote>"Precisava de urgência com um canal e me atenderam no mesmo dia. Profissional muito capacitado, sem dor nenhuma. Já indiquei para toda a família."</blockquote>
-                <div class="testimonial-author">
-                    <div class="author-avatar">A</div>
-                    <div>
-                        <div class="author-name">Ana Paula S.</div>
-                        <div class="author-detail">Tratamento de Canal · Vila Operária</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+ <div class="section-inner">
+ <div class="section-header reveal">
+ <span class="section-label">O que dizem os pacientes</span>
+ <h2>Sorrisos transformados<br>em Maringá</h2>
+ </div>
+ <div class="testimonials-grid">
+ <div class="testimonial reveal">
+ <div class="stars">
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ </div>
+ <blockquote>"Fiz meu implante através do OdontoMaringá e foi a melhor experiência que já tive com dentista. O atendimento foi impecável e o resultado é incrível."</blockquote>
+ <div class="testimonial-author">
+ <div class="author-avatar">C</div>
+ <div>
+ <div class="author-name">Carla M.</div>
+ <div class="author-detail">Implante Dentário · Zona 07</div>
+ </div>
+ </div>
+ </div>
+ <div class="testimonial reveal">
+ <div class="stars">
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ </div>
+ <blockquote>"Em menos de 1 dia me retornaram e já agendei minha avaliação. Fiz o clareamento e estou amando o resultado. Super recomendo para quem está buscando dentista em Maringá."</blockquote>
+ <div class="testimonial-author">
+ <div class="author-avatar">R</div>
+ <div>
+ <div class="author-name">Rafael T.</div>
+ <div class="author-detail">Clareamento · Mandacaru</div>
+ </div>
+ </div>
+ </div>
+ <div class="testimonial reveal">
+ <div class="stars">
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+ </div>
+ <blockquote>"Precisava de urgência com um canal e me atenderam no mesmo dia. Profissional muito capacitado, sem dor nenhuma. Já indiquei para toda a família."</blockquote>
+ <div class="testimonial-author">
+ <div class="author-avatar">A</div>
+ <div>
+ <div class="author-name">Ana Paula S.</div>
+ <div class="author-detail">Tratamento de Canal · Vila Operária</div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
 </section>
 
 <!-- ── CTA BAND ── -->
 <section class="cta-band" id="contato">
-    <div class="cta-band-inner">
-        <div class="reveal">
-            <span class="section-label" style="color: var(--gold)">Avaliação sem custo</span>
-            <h2>Pronto para cuidar<br>do seu <em>sorriso?</em></h2>
-            <p>Preencha o formulário e nossa equipe entrará em contato em até 24 horas para conectar você ao especialista certo em Maringá.</p>
-            <ul class="trust-list">
-                <li>
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    Avaliação 100% gratuita, sem compromisso
-                </li>
-                <li>
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    Especialistas com registro ativo no CRO-PR
-                </li>
-                <li>
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    Retorno garantido em até 24 horas
-                </li>
-                <li>
-                    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                    Seus dados não são compartilhados com terceiros
-                </li>
-            </ul>
-        </div>
+ <div class="cta-band-inner">
+ <div class="reveal">
+ <span class="section-label" style="color: var(--gold)">Avaliação </span>
+ <h2>Pronto para cuidar<br>do seu <em>sorriso?</em></h2>
+ <p>Preencha o formulário e nossa equipe entrará em contato em até 24 horas para conectar você ao especialista certo em Maringá.</p>
+ <ul class="trust-list">
+ <li>
+ <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ Avaliação sem compromisso
+ </li>
+ <li>
+ <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ Especialistas com registro ativo no CRO-PR
+ </li>
+ <li>
+ <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ Retorno garantido em até 24 horas
+ </li>
+ <li>
+ <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+ Seus dados não são compartilhados com terceiros
+ </li>
+ </ul>
+ </div>
 
-        <div class="dark-form reveal">
-            <div class="dark-form-title">Solicitar avaliação gratuita</div>
-            <div class="dark-form-sub">Atendimento via WhatsApp em Maringá</div>
+ <div class="dark-form reveal">
+ <div class="dark-form-title">Solicitar avaliação</div>
+ <div class="dark-form-sub">Atendimento via WhatsApp em Maringá</div>
 
-            <form name="captura-leads-dentistas-cta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-                <input type="hidden" name="cidade" value="Maringá">
-                <input type="text" name="bot-field" style="display:none">
+ <form name="captura-leads-dentistas-cta" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+ <input type="hidden" name="cidade" value="Maringá">
+ <input type="text" name="bot-field" style="display:none">
 
-                <div class="form-group">
-                    <label>Nome completo</label>
-                    <input type="text" name="nome" required placeholder="Seu nome" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>WhatsApp</label>
-                    <input type="tel" name="whatsapp" required placeholder="(44) 99999-9999" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label>Tratamento de interesse</label>
-                    <select name="servico" class="form-control">
-                        <option value="">Selecione</option>
-                        <option value="implante">Implante Dentário</option>
-                        <option value="clareamento">Clareamento Dental</option>
-                        <option value="ortodontia">Aparelho / Ortodontia</option>
-                        <option value="harmonizacao">Harmonização Orofacial</option>
-                        <option value="canal">Tratamento de Canal</option>
-                        <option value="protese">Prótese Dentária</option>
-                        <option value="geral">Consulta Geral</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Mensagem (opcional)</label>
-                    <textarea name="mensagem" class="form-control" rows="3" placeholder="Alguma informação adicional?"></textarea>
-                </div>
-                <button type="submit" class="btn-form">Quero minha avaliação gratuita →</button>
-                <p class="form-trust">
-                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px"><path d="M12 2a5 5 0 015 5v3h1a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2h1V7a5 5 0 015-5z"/></svg>
-                    Dados protegidos. Sem spam.
-                </p>
-            </form>
-        </div>
-    </div>
+ <div class="form-group">
+ <label>Nome completo</label>
+ <input type="text" name="nome" required placeholder="Seu nome" class="form-control">
+ </div>
+ <div class="form-group">
+ <label>WhatsApp</label>
+ <input type="tel" name="whatsapp" required placeholder="(44) 99999-9999" class="form-control">
+ </div>
+ <div class="form-group">
+ <label>Tratamento de interesse</label>
+ <select name="servico" class="form-control">
+ <option value="">Selecione</option>
+ <option value="implante">Implante Dentário</option>
+ <option value="clareamento">Clareamento Dental</option>
+ <option value="ortodontia">Aparelho / Ortodontia</option>
+ <option value="harmonizacao">Harmonização Orofacial</option>
+ <option value="canal">Tratamento de Canal</option>
+ <option value="protese">Prótese Dentária</option>
+ <option value="geral">Consulta Geral</option>
+ </select>
+ </div>
+ <div class="form-group">
+ <label>Mensagem (opcional)</label>
+ <textarea name="mensagem" class="form-control" rows="3" placeholder="Alguma informação adicional?"></textarea>
+ </div>
+ <button type="submit" class="btn-form">Quero minha avaliação →</button>
+ <p class="form-trust">
+ <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px"><path d="M12 2a5 5 0 015 5v3h1a2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8a2 2 0 012-2h1V7a5 5 0 015-5z"/></svg>
+ Dados protegidos. Sem spam.
+ </p>
+ </form>
+ </div>
+ </div>
 </section>
 
 <!-- ── FOOTER ── -->
 <footer>
-    <div class="footer-inner">
-        <div class="footer-brand">
-            <a class="logo" href="#">
-                <div class="logo-mark">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
-                </div>
-                <span class="logo-text">Odonto<span>Maringá</span></span>
-            </a>
-            <p>Conectando pacientes aos melhores especialistas em odontologia de Maringá, PR. Atendimento humanizado, tecnologia de ponta.</p>
-        </div>
-        <div class="footer-links">
-            <a href="#especialidades">Especialidades</a>
-            <a href="#como-funciona">Como Funciona</a>
-            <a href="#depoimentos">Depoimentos</a>
-            <a href="#contato">Contato</a>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <span>© 2026 OdontoMaringá · Maringá, PR</span>
-        <span>Todos os direitos reservados</span>
-    </div>
+ <div class="footer-inner">
+ <div class="footer-brand">
+ <a class="logo" href="#">
+ <div class="logo-mark">
+ <svg viewBox="0 0 24 24"><path d="M12 2C8.5 2 6 5 6 8c0 2.2.8 4 2 5.5V20c0 1.1.9 2 2 2h4c1.1 0 2-.9 2-2v-6.5c1.2-1.5 2-3.3 2-5.5 0-3-2.5-6-6-6z"/></svg>
+ </div>
+ <span class="logo-text">Odonto<span>Maringá</span></span>
+ </a>
+ <p>Conectando pacientes aos melhores especialistas em odontologia de Maringá, PR. Atendimento humanizado, tecnologia de ponta.</p>
+ </div>
+ <div class="footer-links">
+ <a href="#especialidades">Especialidades</a>
+ <a href="#como-funciona">Como Funciona</a>
+ <a href="#depoimentos">Depoimentos</a>
+ <a href="#contato">Contato</a>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <span>© 2026 OdontoMaringá · Maringá, PR</span>
+ <span>Todos os direitos reservados</span>
+ </div>
 </footer>
 
 <!-- WhatsApp Float -->
 <a class="wa-float" href="https://wa.me/5544999999999?text=Olá!%20Vi%20o%20OdontoMaringá%20e%20gostaria%20de%20uma%20avaliação." target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
+ <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+ </svg>
 </a>
 
 <script>
-    // Scroll reveal
-    const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+ // Scroll reveal
+ const reveals = document.querySelectorAll('.reveal');
+ const observer = new IntersectionObserver((entries) => {
+ entries.forEach(entry => {
+ if (entry.isIntersecting) {
+ entry.target.classList.add('visible');
+ }
+ });
+ }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-    reveals.forEach(el => observer.observe(el));
+ reveals.forEach(el => observer.observe(el));
 
-    // Stagger reveal children
-    document.querySelectorAll('.specialties-grid .specialty-card').forEach((el, i) => {
-        el.style.transitionDelay = `${i * 0.08}s`;
-    });
+ // Stagger reveal children
+ document.querySelectorAll('.specialties-grid .specialty-card').forEach((el, i) => {
+ el.style.transitionDelay = `${i * 0.08}s`;
+ });
 
-    // Phone mask
-    document.querySelectorAll('input[type="tel"]').forEach(input => {
-        input.addEventListener('input', function() {
-            let v = this.value.replace(/\D/g,'');
-            if (v.length > 11) v = v.slice(0,11);
-            let out = '';
-            if (v.length > 0) out = '(' + v.slice(0,2);
-            if (v.length >= 3) out += ') ' + v.slice(2,7);
-            if (v.length >= 8) out += '-' + v.slice(7,11);
-            this.value = out;
-        });
-    });
+ // Phone mask
+ document.querySelectorAll('input[type="tel"]').forEach(input => {
+ input.addEventListener('input', function() {
+ let v = this.value.replace(/\D/g,'');
+ if (v.length > 11) v = v.slice(0,11);
+ let out = '';
+ if (v.length > 0) out = '(' + v.slice(0,2);
+ if (v.length >= 3) out += ') ' + v.slice(2,7);
+ if (v.length >= 8) out += '-' + v.slice(7,11);
+ this.value = out;
+ });
+ });
 </script>
 
 </body>
