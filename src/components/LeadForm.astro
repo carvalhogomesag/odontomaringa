@@ -29,6 +29,7 @@ const {
 } = Astro.props;
 
 const name = FORMS[formName] as string;
+const isGeral = procedimento === 'Geral';
 ---
 
 <div class:list={[{ 'dark-form': variant === 'dark' }]}>
@@ -46,7 +47,7 @@ const name = FORMS[formName] as string;
     netlify-honeypot="bot-field"
     action={FORMS.successRedirect}
   >
-    <input type="hidden" name="procedimento" value={procedimento} />
+    {!isGeral && <input type="hidden" name="procedimento" value={procedimento} />}
     <input type="hidden" name="cidade" value="Maringá" />
     <input type="text" name="bot-field" style="display:none" />
 
@@ -74,15 +75,15 @@ const name = FORMS[formName] as string;
     {!showUrgencia && (
       <div class="form-group">
         <label>Tratamento de interesse</label>
-        <select name="servico" class="form-control">
+        <select name="procedimento" class="form-control">
           <option value="">Selecione</option>
-          <option value="implante">Implante Dentário</option>
-          <option value="clareamento">Clareamento Dental</option>
-          <option value="ortodontia">Aparelho / Ortodontia</option>
-          <option value="harmonizacao">Harmonização Orofacial</option>
-          <option value="canal">Tratamento de Canal</option>
-          <option value="protese">Prótese Dentária</option>
-          <option value="geral">Consulta Geral</option>
+          <option value="Implante Dentário">Implante Dentário</option>
+          <option value="Clareamento Dental">Clareamento Dental</option>
+          <option value="Ortodontia">Aparelho / Ortodontia</option>
+          <option value="Harmonização Orofacial">Harmonização Orofacial</option>
+          <option value="Tratamento de Canal">Tratamento de Canal</option>
+          <option value="Prótese Dentária">Prótese Dentária</option>
+          <option value="Consulta Geral">Consulta Geral</option>
         </select>
       </div>
     )}
