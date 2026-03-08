@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import WaFloat from '../components/WaFloat.astro';
+import CtaFloat from '../components/CtaFloat.astro';
 import ProofBar from '../components/ProofBar.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
@@ -12,7 +12,7 @@ import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
   description="Encontre o melhor dentista em Maringá para implantes, clareamento, harmonização e ortodontia. Avaliação com especialistas próximos a você."
 >
   <Nav slot="nav" variant="home" />
-  <WaFloat slot="wa-float" mensagem="geral" />
+  <CtaFloat slot="wa-float" />
 
   <!-- ── HERO ── -->
   <section class="hero">
@@ -24,7 +24,7 @@ import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
           Odontologia Especializada · Maringá PR
         </span>
         <h1>Seu próximo dentista<br>em <em>Maringá</em> está aqui</h1>
-        <p class="hero-desc">Conectamos você ao especialista ideal — implantes, clareamento, ortodontia, harmonização e mais. Avaliação sem compromisso.</p>
+        <p class="hero-desc">Conectamos você ao especialista ideal — implantes, clareamento, ortodontia, harmonização e mais. Conectamos você ao especialista certo em Maringá.</p>
         <div class="hero-ctas">
           <a href="#contato" class="btn-primary">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M8 2h8a2 2 0 012 2v16a2 2 0 01-2 2H8a2 2 0 01-2-2V4a2 2 0 012-2zm4 17a1 1 0 100-2 1 1 0 000 2z"/></svg>
@@ -190,7 +190,7 @@ import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
         <ul class="trust-list">
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Avaliação sem compromisso
+            Conectamos você ao especialista certo em Maringá
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -198,11 +198,11 @@ import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Retorno garantido em até 24 horas
+            Retorno em até 24 horas via WhatsApp
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Seus dados não são compartilhados com terceiros
+            Seus dados são protegidos e não compartilhados
           </li>
         </ul>
       </div>
@@ -305,7 +305,6 @@ import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
   flex-wrap: wrap;
 }
 
-
 .stat-number {
   font-family: 'DM Serif Display', serif;
   font-size: 1.8rem;
@@ -323,8 +322,6 @@ import { MARCA, ESPECIALIDADES, FORMS } from '../constants';
   box-shadow: var(--shadow-lg);
   overflow: hidden;
   border: 1px solid var(--border);
-  position: relative;
-  z-index: 1;
 }
 
 .card-header {

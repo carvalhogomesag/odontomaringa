@@ -734,25 +734,33 @@ footer {
 }
 
 /* ── WHATSAPP FLOAT ──────────────────────────────────────────────────────── */
-.wa-float {
+.cta-float {
   position: fixed;
-  bottom: 20px; right: 20px;
+  bottom: 24px; right: 24px;
   z-index: 200;
-  background: #25d366;
-  width: 54px; height: 54px;
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+  background: var(--teal);
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+  padding: 14px 22px;
+  border-radius: 50px;
+  box-shadow: 0 8px 32px rgba(10,124,110,0.4);
   text-decoration: none;
-  transition: transform 0.25s, box-shadow 0.25s;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.01em;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+  white-space: nowrap;
 }
 
-.wa-float:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 36px rgba(37,211,102,0.55);
+.cta-float:hover {
+  background: var(--teal-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(10,124,110,0.5);
 }
 
-.wa-float svg { width: 26px; height: 26px; fill: white; }
+.cta-float svg { width: 18px; height: 18px; fill: white; flex-shrink: 0; }
+.cta-float span { color: white; }
 
 /* ── ANIMAÇÕES ───────────────────────────────────────────────────────────── */
 @keyframes slideUp {
@@ -824,6 +832,6 @@ footer {
 
   .content-grid { gap: 72px; }
 
-  .wa-float { bottom: 28px; right: 28px; width: 58px; height: 58px; }
-  .wa-float svg { width: 28px; height: 28px; }
+  .cta-float { bottom: 28px; right: 28px; width: 58px; height: 58px; }
+  .cta-float svg { width: 28px; height: 28px; }
 }

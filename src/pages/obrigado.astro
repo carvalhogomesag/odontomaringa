@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import WaFloat from '../components/WaFloat.astro';
+import CtaFloat from '../components/CtaFloat.astro';
 import { MARCA, WHATSAPP, GA4 } from '../constants';
 ---
 
@@ -10,7 +10,7 @@ import { MARCA, WHATSAPP, GA4 } from '../constants';
   description="Sua solicitação foi recebida. Em breve um especialista em Maringá entrará em contato."
 >
   <Nav slot="nav" variant="especialidade" />
-  <WaFloat slot="wa-float" mensagem="formulario" />
+  <CtaFloat slot="wa-float" />
 
   <main class="obrigado-main">
     <div class="thank-card">
@@ -65,7 +65,7 @@ import { MARCA, WHATSAPP, GA4 } from '../constants';
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
           <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
         </svg>
-        Voltar à página inicial
+        Voltar ao início
       </a>
 
       <p class="wa-hint">

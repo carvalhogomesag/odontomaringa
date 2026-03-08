@@ -1,7 +1,7 @@
 ---
 import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
-import WaFloat from '../components/WaFloat.astro';
+import CtaFloat from '../components/CtaFloat.astro';
 import ProofBar from '../components/ProofBar.astro';
 import LeadForm from '../components/LeadForm.astro';
 import type { FORMS, WHATSAPP } from '../constants';
@@ -35,7 +35,7 @@ const {
 
 <Base title={title} description={description}>
   <Nav slot="nav" variant="especialidade" />
-  <WaFloat slot="wa-float" mensagem={mensagemWa} />
+  <CtaFloat slot="wa-float" />
 
   <!-- ── HERO ── -->
   <section class="esp-hero">
@@ -81,7 +81,7 @@ const {
         <ul class="trust-list">
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Avaliação sem compromisso
+            Conectamos você ao especialista certo em Maringá
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -89,7 +89,7 @@ const {
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-            Retorno garantido em até 24 horas
+            Retorno em até 24 horas via WhatsApp
           </li>
           <li>
             <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
@@ -186,8 +186,6 @@ const {
   box-shadow: var(--shadow-lg);
   overflow: hidden;
   border: 1px solid var(--border);
-  position: relative;
-  z-index: 1;
 }
 
 .card-header {
