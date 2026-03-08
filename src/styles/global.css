@@ -52,16 +52,12 @@ a { text-decoration: none; }
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 1000;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   padding: 0 20px;
-}
-
-nav + * {
-  isolation: isolate;
 }
 
 .nav-inner {
@@ -134,6 +130,12 @@ nav + * {
 .nav-back:hover { color: var(--teal); }
 .nav-back svg { width: 16px; height: 16px; fill: currentColor; }
 
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .btn-nav {
   background: var(--ink);
   color: var(--white) !important;
@@ -182,7 +184,7 @@ nav + * {
   background: var(--white);
   border-bottom: 1px solid var(--border);
   padding: 20px;
-  z-index: 99;
+  z-index: 999;
   flex-direction: column;
   gap: 4px;
   box-shadow: var(--shadow-md);
