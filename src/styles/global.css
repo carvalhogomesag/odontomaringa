@@ -398,6 +398,16 @@ textarea.form-control { resize: vertical; min-height: 90px; }
   color: var(--white);
 }
 
+.dark-form select.form-control {
+  background: rgba(255,255,255,0.08);
+  color: var(--white);
+}
+
+.dark-form select.form-control option {
+  background: var(--ink);
+  color: var(--white);
+}
+
 .dark-form .form-control::placeholder { color: rgba(255,255,255,0.35); }
 
 .dark-form .form-control:focus {
