@@ -89,6 +89,7 @@ export const MARCA = {
   descricao: 'Conectando pacientes aos melhores especialistas em odontologia de Maringá, PR.',
   ano:       '2026',
   copyright: '© 2026 OdontoMaringá · Maringá, PR',
+  cta:       'Solicitar Contato',
 } as const;
 
 
